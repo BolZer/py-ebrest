@@ -1,0 +1,43 @@
+import unittest
+from unittest import mock
+
+from easybill_rest import Client
+from easybill_rest.resources.resource_customers import ResourceCustomers
+from easybill_rest.tests.test_case_abstract import EasybillRestTestCaseAbstract
+
+
+class TestResourceCustomers(unittest.TestCase, EasybillRestTestCaseAbstract):
+
+    def setUp(self) -> None:
+        mocked_object = mock.Mock()
+        mocked_object.call = mock.Mock(return_value={})
+        self.mocked_object = ResourceCustomers(mocked_object)
+
+    def test_get_endpoint(self) -> None:
+        self.assertEqual("/customers", Client('').customers()._endpoint)
+
+    def test_get_customers(self) -> None:
+        self.assertTrue(isinstance(self.mocked_object.get_customers({"page": "2"}), dict))
+
+    def test_get_customer(self) -> None:
+        self.assertTrue(isinstance(self.mocked_object.get_customer("3"), dict))
+
+    def test_create_customer(self) -> None:
+        self.assertTrue(isinstance(self.mocked_object.create_customer({"last_name": "test"}), dict))
+
+    def test_update_customer(self) -> None:
+        self.assertTrue(isinstance(self.mocked_object.update_customer("3", {"last_name": "test"}), dict))
+
+    def test_delete_customer(self) -> None:
+        self.assertIsNone(self.mocked_object.delete_customer("3"))
+
+    @staticmethod
+    def get_suite() -> unittest.TestSuite:
+        return unittest.TestSuite(map(TestResourceCustomers, [
+            'test_get_endpoint',
+            'test_get_customers',
+            'test_get_customer',
+            'test_create_customer',
+            'test_update_customer',
+            'test_delete_customer',
+        ]))
