@@ -1,9 +1,9 @@
 # easybill_rest (py-ebrest)
 [![Generic badge](https://img.shields.io/badge/Version-0.1.5-important.svg)]()
 [![Generic badge](https://img.shields.io/badge/coverage-97%25-success.svg)]()
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/py-ebrest.svg)
-![GitHub](https://img.shields.io/github/license/bolZer/py-ebrest.svg)
-![PyPI - Wheel](https://img.shields.io/pypi/wheel/py-ebrest.svg)
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/easybill_rest.svg)
+[![Generic badge](https://img.shields.io/badge/License-MIT-blue.svg)]()
+[![Build Status](https://travis-ci.com/BolZer/py-ebrest.svg?branch=master)](https://travis-ci.com/BolZer/py-ebrest)
 
 `easybill_rest` is a library to work with the easybill REST API (https://www.easybill.de/api/) written in Python.
 
