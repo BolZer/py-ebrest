@@ -7,7 +7,7 @@
 
 `easybill_rest` is a library to work with the easybill REST API (https://www.easybill.de/api/) written in Python.
 
-All Resources except are available.
+All Resources are available.
 
 The library supports only the `Bearer` Authentication and calls the API only
 through `HTTPS`.
