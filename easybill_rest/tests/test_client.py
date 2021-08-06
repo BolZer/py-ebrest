@@ -88,6 +88,45 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
         client._requests.request = mock.Mock(return_value=response_mock)
         self.assertRaises(RequestException, client.call, "", "", {})
 
+    def test_client_call_using_right_format(self) -> None:
+        client = Client("Test")
+        client._requests = mock.Mock()
+
+        header = {'Authorization': 'Bearer Test', 'User-Agent': 'py-ebrest 0.1.7', 'Content-type': 'application/json'}
+
+        with mock.patch.object(Client, 'call', wraps=client.call) as clientMock:
+            client.documents().update_document("1", {"is_archive": True})
+            clientMock.assert_called_once_with(
+                'PUT',
+                '/rest/v1/documents/1',
+                header,
+                {"is_archive": True}
+            )
+
+        with mock.patch.object(Client, 'call', wraps=client.call) as clientMock:
+            client.documents().create_document({"is_archive": True})
+            clientMock.assert_called_once_with(
+                'POST',
+                '/rest/v1/documents',
+                header,
+                {"is_archive": True}
+            )
+
+        with mock.patch.object(Client, 'call', wraps=client.call) as clientMock:
+            client.documents().get_document("2")
+            clientMock.assert_called_once_with(
+                'GET',
+                '/rest/v1/documents/2',
+                header,
+            )
+
+        with mock.patch.object(Client, 'call', wraps=client.call) as clientMock:
+            client.documents().get_documents({"page": 2})
+            clientMock.assert_called_once_with(
+                'GET',
+                '/rest/v1/documents?page=2',
+                header,
+            )
     def test_get_documents_resource(self) -> None:
         self.assertTrue(isinstance(Client('').documents(), ResourceDocuments))
 
