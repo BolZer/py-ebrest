@@ -29,8 +29,10 @@ class Client:
     _requests = requests
 
     api_key: str = ""
+    timeout: int
 
-    def __init__(self, api_key: str) -> None:
+    def __init__(self, api_key: str, timeout: int = 10) -> None:
+        self.timeout = timeout
         self.api_key = api_key
         self._requests = requests
 
@@ -170,17 +172,34 @@ class Client:
         """
 
         if method == "GET":
-            response = self._requests.request(method, self._base_url + request_url, headers=headers, params=passed_payload)
+            response = self._requests.request(
+                method,
+                self._base_url + request_url,
+                headers=headers,
+                params=passed_payload,
+                timeout=self.timeout
+            )
             response.raise_for_status()
 
             return response.json()
         elif method == "PUT" or method == "POST":
-            response = self._requests.request(method, self._base_url + request_url, headers=headers, json=passed_payload)
+            response = self._requests.request(
+                method,
+                self._base_url + request_url,
+                headers=headers,
+                json=passed_payload,
+                timeout=self.timeout
+            )
             response.raise_for_status()
 
             return response.json()
         else:
-            response = self._requests.request(method, self._base_url + request_url, headers=headers)
+            response = self._requests.request(
+                method,
+                self._base_url + request_url,
+                headers=headers,
+                timeout=self.timeout
+            )
             response.raise_for_status()
 
             return response.json()
@@ -191,7 +210,12 @@ class Client:
             :raises: RequestException
         """
 
-        response = self._requests.post(self._base_url + request_url, headers=headers, files={'file': file})
+        response = self._requests.post(
+            self._base_url + request_url,
+            headers=headers,
+            timeout=self.timeout,
+            files={'file': file}
+        )
         response.raise_for_status()
 
         return response.json()
@@ -202,7 +226,7 @@ class Client:
             :raises: RequestException
         """
 
-        response = self._requests.get(self._base_url + request_url, headers=headers)
+        response = self._requests.get(self._base_url + request_url, headers=headers, timeout=self.timeout)
         response.raise_for_status()
 
         return response.content

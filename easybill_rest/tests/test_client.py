@@ -200,6 +200,7 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
             'test_client_basic_headers',
             'test_client_json_headers',
             'test_client_pdf_headers',
+            'test_client_call_using_right_format',
             'test_client_call_api_success',
             'test_client_call_api_client_exceptions',
             'test_get_documents_resource',
