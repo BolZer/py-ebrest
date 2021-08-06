@@ -31,7 +31,7 @@ from easybill_rest.tests.test_case_abstract import EasybillRestTestCaseAbstract
 class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
 
     def test_client_version(self) -> None:
-        self.assertEqual('0.1.7', Client('')._version)
+        self.assertEqual('0.1.8', Client('')._version)
 
     def test_client_base_url(self) -> None:
         self.assertEqual('https://api.easybill.de', Client('')._base_url)
@@ -92,7 +92,11 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
         client = Client("Test")
         client._requests = mock.Mock()
 
-        header = {'Authorization': 'Bearer Test', 'User-Agent': 'py-ebrest 0.1.7', 'Content-type': 'application/json'}
+        header = {
+            'Authorization': 'Bearer Test',
+            'User-Agent': 'py-ebrest 0.1.8',
+            'Content-type': 'application/json'
+        }
 
         with mock.patch.object(Client, 'call', wraps=client.call) as clientMock:
             client.documents().update_document("1", {"is_archive": True})
