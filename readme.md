@@ -1,5 +1,5 @@
 # easybill_rest (py-ebrest)
-[![Generic badge](https://img.shields.io/badge/Version-0.1.6-important.svg)]()
+[![Generic badge](https://img.shields.io/badge/Version-0.1.7-important.svg)]()
 [![Generic badge](https://img.shields.io/badge/coverage-97%25-success.svg)]()
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/easybill_rest.svg)
 [![Generic badge](https://img.shields.io/badge/License-MIT-blue.svg)]()

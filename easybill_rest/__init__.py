@@ -24,7 +24,7 @@ from easybill_rest.resources.resource_webhooks import ResourceWebhooks
 
 
 class Client:
-    _version: str = "0.1.0"
+    _version: str = "0.1.7"
     _base_url: str = "https://api.easybill.de"
     _requests = requests
 
@@ -169,10 +169,21 @@ class Client:
             :raises: RequestException
         """
 
-        response = self._requests.request(method, self._base_url + request_url, headers=headers, params=passed_payload)
-        response.raise_for_status()
+        if method == "GET":
+            response = self._requests.request(method, self._base_url + request_url, headers=headers, params=passed_payload)
+            response.raise_for_status()
 
-        return response.json()
+            return response.json()
+        elif method == "PUT" or method == "POST":
+            response = self._requests.request(method, self._base_url + request_url, headers=headers, json=passed_payload)
+            response.raise_for_status()
+
+            return response.json()
+        else:
+            response = self._requests.request(method, self._base_url + request_url, headers=headers)
+            response.raise_for_status()
+
+            return response.json()
 
     def upload(self, request_url: str, headers: dict, file: bytes) -> dict:
         """
