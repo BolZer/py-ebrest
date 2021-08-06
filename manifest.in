@@ -1,3 +1,4 @@
 include readme.md
 include changelog.md
 include license.md
+include easybill_rest/resources/*.py
