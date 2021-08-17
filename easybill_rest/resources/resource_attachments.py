@@ -60,7 +60,7 @@ class ResourceAttachments(ResourceAbstract):
         self._client.call(
             "DELETE",
             Helper.create_request_url_from_params(self._endpoint + "/" + attachment_id),
-            self._client.get_basic_headers_for_json()
+            self._client.get_basic_headers()
         )
 
     def get_content(self, attachment_id: str, headers: dict = None) -> bytes:

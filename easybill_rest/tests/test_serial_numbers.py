@@ -26,6 +26,9 @@ class TestResourceSerialNumbers(unittest.TestCase, EasybillRestTestCaseAbstract)
         self.assertTrue(isinstance(self.mocked_object.create_serial_number({"serial": "2000"}), dict))
 
     def test_delete_serial_number(self) -> None:
+        mocked_object = mock.Mock()
+        mocked_object.call = mock.Mock(return_value=None)
+        self.mocked_object = ResourceSerialNumbers(mocked_object)
         self.assertIsNone(self.mocked_object.delete_serial_number("3"))
 
     @staticmethod

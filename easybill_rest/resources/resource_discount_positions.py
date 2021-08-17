@@ -61,5 +61,5 @@ class ResourceDiscountPositions(ResourceAbstract):
         self._client.call(
             "DELETE",
             Helper.create_request_url_from_params(self._endpoint + "/" + position_discount_id),
-            self._client.get_basic_headers_for_json()
+            self._client.get_basic_headers()
         )

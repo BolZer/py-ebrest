@@ -24,7 +24,7 @@ from easybill_rest.resources.resource_webhooks import ResourceWebhooks
 
 
 class Client:
-    _version: str = "0.1.8"
+    _version: str = "0.1.9"
     _base_url: str = "https://api.easybill.de"
     _requests = requests
 
@@ -193,6 +193,16 @@ class Client:
             response.raise_for_status()
 
             return response.json()
+        elif method == "DELETE":
+            response = self._requests.request(
+                method,
+                self._base_url + request_url,
+                headers=headers,
+                timeout=self.timeout
+            )
+
+            response.raise_for_status()
+            return {}
         else:
             response = self._requests.request(
                 method,

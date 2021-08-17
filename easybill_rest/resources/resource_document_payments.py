@@ -51,5 +51,5 @@ class ResourceDocumentPayments(ResourceAbstract):
         self._client.call(
             "DELETE",
             Helper.create_request_url_from_params(self._endpoint + "/" + document_payment_id),
-            self._client.get_basic_headers_for_json()
+            self._client.get_basic_headers()
         )
