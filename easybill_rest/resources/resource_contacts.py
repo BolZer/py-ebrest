@@ -22,44 +22,75 @@ class ResourceContacts(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id + "/" + "contacts", params),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                customer_id +
+                "/" +
+                "contacts",
+                params),
+            self._client.get_basic_headers_for_json())
 
     def get_contact(self, customer_id: str, contact_id: str) -> dict:
         """get_contact returns the referenced (id) contact for the referenced customer"""
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id + "/" + "contacts" + "/" + contact_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                customer_id +
+                "/" +
+                "contacts" +
+                "/" +
+                contact_id),
+            self._client.get_basic_headers_for_json())
 
     def create_contact(self, customer_id: str, payload: dict) -> dict:
         """create_contact returns the contact model as dict on success with the data from the passed payload for the referenced customer"""
 
         return self._client.call(
             "POST",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id + "/" + "contacts"),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                customer_id +
+                "/" +
+                "contacts"),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
-    def update_contact(self, customer_id: str, contact_id: str, payload: dict) -> dict:
+    def update_contact(
+            self,
+            customer_id: str,
+            contact_id: str,
+            payload: dict) -> dict:
         """update_contact updates the reference (id) contact with the given payload. Returns the updated contact model"""
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id + "/" + "contacts" + "/" + contact_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                customer_id +
+                "/" +
+                "contacts" +
+                "/" +
+                contact_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_contact(self, customer_id: str, contact_id: str) -> None:
         """delete_contact returns None on success and raises an exception if the contact couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id + "/" + "contacts" + "/" + contact_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                customer_id +
+                "/" +
+                "contacts" +
+                "/" +
+                contact_id),
+            self._client.get_basic_headers())

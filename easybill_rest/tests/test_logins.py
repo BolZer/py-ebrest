@@ -17,7 +17,8 @@ class TestResourceLogins(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/logins", Client('').logins()._endpoint)
 
     def test_get_logins(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_logins({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_logins({"page": "2"}), dict))
 
     def test_get_login(self) -> None:
         self.assertTrue(isinstance(self.mocked_object.get_login("3"), dict))

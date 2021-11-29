@@ -19,16 +19,30 @@ class TestResourceAttachments(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/attachments", Client('').attachments()._endpoint)
 
     def test_get_attachments(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_attachments({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_attachments({"page": "2"}), dict))
 
     def test_get_attachment(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_attachment("3"), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.get_attachment("3"),
+                dict))
 
     def test_create_attachment(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_attachment(bytes('{"test": "test"}', 'utf-8')), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.create_attachment(
+                    bytes(
+                        '{"test": "test"}',
+                        'utf-8')),
+                dict))
 
     def test_update_attachment(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_attachment("3", {"test": "test"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_attachment(
+                    "3", {
+                        "test": "test"}), dict))
 
     def test_delete_attachment(self) -> None:
         self.assertIsNone(self.mocked_object.delete_attachment("3"))

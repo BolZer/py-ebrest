@@ -82,7 +82,8 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
         response_mock = mock.Mock()
         response_mock.status_code = mock.Mock(return_value=500)
         response_mock.content = bytes('{"msg": "exception"}', 'utf-8')
-        response_mock.raise_for_status = mock.Mock(side_effect=RequestException)
+        response_mock.raise_for_status = mock.Mock(
+            side_effect=RequestException)
 
         client._requests = mock.Mock()
         client._requests.request = mock.Mock(return_value=response_mock)
@@ -131,6 +132,7 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
                 '/rest/v1/documents?page=2',
                 header,
             )
+
     def test_get_documents_resource(self) -> None:
         self.assertTrue(isinstance(Client('').documents(), ResourceDocuments))
 
@@ -141,22 +143,34 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertTrue(isinstance(Client('').positions(), ResourcePositions))
 
     def test_get_document_payments_resource(self) -> None:
-        self.assertTrue(isinstance(Client('').document_payments(), ResourceDocumentPayments))
+        self.assertTrue(
+            isinstance(
+                Client('').document_payments(),
+                ResourceDocumentPayments))
 
     def test_get_logins_resource(self) -> None:
         self.assertTrue(isinstance(Client('').logins(), ResourceLogins))
 
     def test_get_pdf_templates_resource(self) -> None:
-        self.assertTrue(isinstance(Client('').pdf_templates(), ResourcePdfTemplates))
+        self.assertTrue(
+            isinstance(
+                Client('').pdf_templates(),
+                ResourcePdfTemplates))
 
     def test_get_post_boxes_resource(self) -> None:
         self.assertTrue(isinstance(Client('').post_boxes(), ResourcePostBoxes))
 
     def test_get_customer_groups_resource(self) -> None:
-        self.assertTrue(isinstance(Client('').customer_groups(), ResourceCustomerGroups))
+        self.assertTrue(
+            isinstance(
+                Client('').customer_groups(),
+                ResourceCustomerGroups))
 
     def test_get_position_groups_resource(self) -> None:
-        self.assertTrue(isinstance(Client('').position_groups(), ResourcePositionGroups))
+        self.assertTrue(
+            isinstance(
+                Client('').position_groups(),
+                ResourcePositionGroups))
 
     def test_get_projects_resource(self) -> None:
         self.assertTrue(isinstance(Client('').projects(), ResourceProjects))
@@ -168,10 +182,16 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertTrue(isinstance(Client('').stocks(), ResourceStocks))
 
     def test_get_serial_numbers_resource(self) -> None:
-        self.assertTrue(isinstance(Client('').serial_numbers(), ResourceSerialNumbers))
+        self.assertTrue(
+            isinstance(
+                Client('').serial_numbers(),
+                ResourceSerialNumbers))
 
     def test_get_sepa_payments(self) -> None:
-        self.assertTrue(isinstance(Client('').sepa_payments(), ResourceSepaPayments))
+        self.assertTrue(
+            isinstance(
+                Client('').sepa_payments(),
+                ResourceSepaPayments))
 
     def test_get_webhooks(self) -> None:
         self.assertTrue(isinstance(Client('').webhooks(), ResourceWebhooks))
@@ -180,19 +200,34 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertTrue(isinstance(Client('').contacts(), ResourceContacts))
 
     def test_get_text_templates(self) -> None:
-        self.assertTrue(isinstance(Client('').text_templates(), ResourceTextTemplates))
+        self.assertTrue(
+            isinstance(
+                Client('').text_templates(),
+                ResourceTextTemplates))
 
     def test_get_discount_positions(self) -> None:
-        self.assertTrue(isinstance(Client('').discount_positions(), ResourceDiscountPositions))
+        self.assertTrue(
+            isinstance(
+                Client('').discount_positions(),
+                ResourceDiscountPositions))
 
     def test_get_discount_position_groups(self) -> None:
-        self.assertTrue(isinstance(Client('').discount_position_groups(), ResourceDiscountPositionGroups))
+        self.assertTrue(
+            isinstance(
+                Client('').discount_position_groups(),
+                ResourceDiscountPositionGroups))
 
     def test_get_attachments(self) -> None:
-        self.assertTrue(isinstance(Client('').attachments(), ResourceAttachments))
+        self.assertTrue(
+            isinstance(
+                Client('').attachments(),
+                ResourceAttachments))
 
     def test_get_time_trackings(self) -> None:
-        self.assertTrue(isinstance(Client('').time_trackings(), ResourceTimeTrackings))
+        self.assertTrue(
+            isinstance(
+                Client('').time_trackings(),
+                ResourceTimeTrackings))
 
     @staticmethod
     def get_suite() -> unittest.TestSuite:

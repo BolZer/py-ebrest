@@ -37,7 +37,8 @@ class Client:
         self._requests = requests
 
     def get_basic_headers(self) -> dict:
-        """get_basic_headers returns the basic headers used by the client. Contains auth and agent."""
+        """get_basic_headers returns the basic headers used by the client. Contains auth and
+        agent. """
 
         return {
             "Authorization": "Bearer " + self.api_key,
@@ -45,7 +46,8 @@ class Client:
         }
 
     def get_basic_headers_for_json(self) -> dict:
-        """get_basic_headers_for_json returns the basic headers extended with a json content type."""
+        """get_basic_headers_for_json returns the basic headers extended with a
+        json content type."""
 
         return {
             **self.get_basic_headers(),
@@ -66,7 +68,8 @@ class Client:
         return ResourceDocuments(self)
 
     def document_payments(self) -> ResourceDocumentPayments:
-        """document_payments returns the document payments resource which exposes the api document payments resource."""
+        """document_payments returns the document payments resource which exposes the ap
+        i document payments resource."""
 
         return ResourceDocumentPayments(self)
 
@@ -76,7 +79,8 @@ class Client:
         return ResourceCustomers(self)
 
     def customer_groups(self) -> ResourceCustomerGroups:
-        """customer_groups returns the customers groups resource which exposes the api customer groups resource."""
+        """customer_groups returns the customers groups resource which exposes the
+         api customer groups resource."""
 
         return ResourceCustomerGroups(self)
 
@@ -86,7 +90,8 @@ class Client:
         return ResourcePositions(self)
 
     def position_groups(self) -> ResourcePositionGroups:
-        """position_groups returns the position groups resource which exposes the api position groups resource."""
+        """position_groups returns the position groups resource which exposes
+        the api position groups resource."""
 
         return ResourcePositionGroups(self)
 
@@ -96,7 +101,8 @@ class Client:
         return ResourceLogins(self)
 
     def pdf_templates(self) -> ResourcePdfTemplates:
-        """pdf_templates returns the pdf-templates resource which exposes the api pdf-templates resource."""
+        """pdf_templates returns the pdf-templates resource which exposes the api
+        pdf-templates resource."""
 
         return ResourcePdfTemplates(self)
 
@@ -116,7 +122,8 @@ class Client:
         return ResourceTasks(self)
 
     def time_trackings(self) -> ResourceTimeTrackings:
-        """time_trackings returns the time tracking resource which exposes the api time tracking resource."""
+        """time_trackings returns the time tracking resource which exposes the
+        api time tracking resource."""
 
         return ResourceTimeTrackings(self)
 
@@ -126,12 +133,14 @@ class Client:
         return ResourceStocks(self)
 
     def serial_numbers(self) -> ResourceSerialNumbers:
-        """serial_numbers returns the serial number resource which exposes the api serial number resource."""
+        """serial_numbers returns the serial number resource which exposes the api serial number
+        resource."""
 
         return ResourceSerialNumbers(self)
 
     def sepa_payments(self) -> ResourceSepaPayments:
-        """sepa_payments returns the sepa payments resource which exposes the sepa payment resource."""
+        """sepa_payments returns the sepa payments resource which exposes the sepa payment
+        resource."""
 
         return ResourceSepaPayments(self)
 
@@ -146,17 +155,20 @@ class Client:
         return ResourceContacts(self)
 
     def text_templates(self) -> ResourceTextTemplates:
-        """text_templates returns the text template resource which exposes the text template resource."""
+        """text_templates returns the text template resource which exposes the text template
+        resource."""
 
         return ResourceTextTemplates(self)
 
     def discount_positions(self) -> ResourceDiscountPositions:
-        """discount_positions returns the position discount resource which exposes the position discount resource."""
+        """discount_positions returns the position discount resource which exposes the position
+        discount resource."""
 
         return ResourceDiscountPositions(self)
 
     def discount_position_groups(self) -> ResourceDiscountPositionGroups:
-        """discount_position_groups returns the position group discount resource which exposes the position group discount resource."""
+        """discount_position_groups returns the position group discount resource which exposes
+        the position group discount resource."""
 
         return ResourceDiscountPositionGroups(self)
 
@@ -165,7 +177,12 @@ class Client:
 
         return ResourceAttachments(self)
 
-    def call(self, method: str, request_url: str, headers: dict, passed_payload: dict = None) -> dict:
+    def call(
+            self,
+            method: str,
+            request_url: str,
+            headers: dict,
+            passed_payload: dict = None) -> dict:
         """
             call calls the easybill api with the prepared connection.
             :raises: RequestException
@@ -182,7 +199,8 @@ class Client:
             response.raise_for_status()
 
             return response.json()
-        elif method == "PUT" or method == "POST":
+
+        if method in ("PUT", "POST"):
             response = self._requests.request(
                 method,
                 self._base_url + request_url,
@@ -193,7 +211,8 @@ class Client:
             response.raise_for_status()
 
             return response.json()
-        elif method == "DELETE":
+
+        if method == "DELETE":
             response = self._requests.request(
                 method,
                 self._base_url + request_url,
@@ -203,20 +222,21 @@ class Client:
 
             response.raise_for_status()
             return {}
-        else:
-            response = self._requests.request(
-                method,
-                self._base_url + request_url,
-                headers=headers,
-                timeout=self.timeout
-            )
-            response.raise_for_status()
 
-            return response.json()
+        response = self._requests.request(
+            method,
+            self._base_url + request_url,
+            headers=headers,
+            timeout=self.timeout
+        )
+        response.raise_for_status()
+
+        return response.json()
 
     def upload(self, request_url: str, headers: dict, file: bytes) -> dict:
         """
-            upload calls the easybill api with the prepared connection to upload the passed bytes / file.
+            upload calls the easybill api with the prepared connection to upload the
+            passed bytes / file.
             :raises: RequestException
         """
 
@@ -232,11 +252,15 @@ class Client:
 
     def download(self, request_url: str, headers: dict) -> bytes:
         """
-            download calls the easybill api with the prepared connection to download the referenced attachment.
+            download calls the easybill api with the prepared connection to download the
+            referenced attachment.
             :raises: RequestException
         """
 
-        response = self._requests.get(self._base_url + request_url, headers=headers, timeout=self.timeout)
+        response = self._requests.get(
+            self._base_url + request_url,
+            headers=headers,
+            timeout=self.timeout)
         response.raise_for_status()
 
         return response.content

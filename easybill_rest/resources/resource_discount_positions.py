@@ -31,9 +31,11 @@ class ResourceDiscountPositions(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_discount_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_discount_id),
+            self._client.get_basic_headers_for_json())
 
     def create_position_discount(self, payload: dict) -> dict:
         """create_position_discount returns the position discount model as dict on success with the data from the passed payload"""
@@ -45,21 +47,28 @@ class ResourceDiscountPositions(ResourceAbstract):
             payload
         )
 
-    def update_position_discount(self, position_discount_id: str, payload: dict) -> dict:
+    def update_position_discount(
+            self,
+            position_discount_id: str,
+            payload: dict) -> dict:
         """update_position_discount updates the reference (id) position discount with the given payload. Returns the updated position discount model"""
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_discount_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_discount_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_position_discount(self, position_discount_id: str) -> None:
         """delete_position_discount returns None on success and raises an exception if the discount couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_discount_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_discount_id),
+            self._client.get_basic_headers())

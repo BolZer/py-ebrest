@@ -31,9 +31,9 @@ class ResourceCustomers(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + customer_id),
+            self._client.get_basic_headers_for_json())
 
     def create_customer(self, payload: dict) -> dict:
         """create_customer returns the customer model as dict on success with the data from the passed payload"""
@@ -50,16 +50,18 @@ class ResourceCustomers(ResourceAbstract):
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                customer_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_customer(self, customer_id: str) -> None:
         """delete_document returns None on success and raises an exception if the customer couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + customer_id),
+            self._client.get_basic_headers())

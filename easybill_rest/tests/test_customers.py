@@ -17,16 +17,22 @@ class TestResourceCustomers(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/customers", Client('').customers()._endpoint)
 
     def test_get_customers(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_customers({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_customers({"page": "2"}), dict))
 
     def test_get_customer(self) -> None:
         self.assertTrue(isinstance(self.mocked_object.get_customer("3"), dict))
 
     def test_create_customer(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_customer({"last_name": "test"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.create_customer({"last_name": "test"}), dict))
 
     def test_update_customer(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_customer("3", {"last_name": "test"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_customer(
+                    "3", {
+                        "last_name": "test"}), dict))
 
     def test_delete_customer(self) -> None:
         self.assertIsNone(self.mocked_object.delete_customer("3"))

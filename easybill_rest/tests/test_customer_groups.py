@@ -6,7 +6,9 @@ from easybill_rest.resources.resource_customer_groups import ResourceCustomerGro
 from easybill_rest.tests.test_case_abstract import EasybillRestTestCaseAbstract
 
 
-class TestResourceCustomerGroups(unittest.TestCase, EasybillRestTestCaseAbstract):
+class TestResourceCustomerGroups(
+        unittest.TestCase,
+        EasybillRestTestCaseAbstract):
 
     def setUp(self) -> None:
         mocked_object = mock.Mock()
@@ -14,19 +16,30 @@ class TestResourceCustomerGroups(unittest.TestCase, EasybillRestTestCaseAbstract
         self.mocked_object = ResourceCustomerGroups(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/customer-groups", Client('').customer_groups()._endpoint)
+        self.assertEqual(
+            "/customer-groups",
+            Client('').customer_groups()._endpoint)
 
     def test_get_customer_groups(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_customer_groups({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_customer_groups({"page": "2"}), dict))
 
     def test_get_customer_group(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_customer_group("3"), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.get_customer_group("3"),
+                dict))
 
     def test_create_customer_group(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_customer_group({"test": "test"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.create_customer_group({"test": "test"}), dict))
 
     def test_update_customer_group(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_customer_group("3", {"test": "test"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_customer_group(
+                    "3", {
+                        "test": "test"}), dict))
 
     def test_delete_customer_group(self) -> None:
         self.assertIsNone(self.mocked_object.delete_customer_group("3"))

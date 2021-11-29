@@ -23,27 +23,43 @@ class TestResourceDocuments(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertTrue(isinstance(self.mocked_object.get_document("3"), dict))
 
     def test_create_document(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_document({"title": "test"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.create_document({"title": "test"}), dict))
 
     def test_update_document(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_document("3", {"title": "test"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_document(
+                    "3", {
+                        "title": "test"}), dict))
 
     def test_delete_document(self) -> None:
         self.assertIsNone(self.mocked_object.delete_document("3"))
 
     def test_finalize_document(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.finalize_document("3"), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.finalize_document("3"),
+                dict))
 
     def test_cancel_document(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.cancel_document("3"), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.cancel_document("3"),
+                dict))
 
     def test_send_document(self) -> None:
-        self.assertIsNone(self.mocked_object.send_document("3", SendMethod.EMAIL, {}))
+        self.assertIsNone(
+            self.mocked_object.send_document(
+                "3", SendMethod.EMAIL, {}))
 
     def test_download_document(self) -> None:
         mocked_object = mock.Mock()
         mocked_object.download = mock.Mock(return_value=bytes('test', 'utf-8'))
-        self.assertTrue(isinstance(ResourceDocuments(mocked_object).download_document("3"), bytes))
+        self.assertTrue(
+            isinstance(
+                ResourceDocuments(mocked_object).download_document("3"),
+                bytes))
 
     @staticmethod
     def get_suite() -> unittest.TestSuite:

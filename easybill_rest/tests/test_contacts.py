@@ -17,16 +17,31 @@ class TestResourceContacts(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/customers", Client('').contacts()._endpoint)
 
     def test_get_contacts(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_contacts("2", {"page": "2"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.get_contacts(
+                    "2", {
+                        "page": "2"}), dict))
 
     def test_get_contact(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_contact("2", "3"), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.get_contact(
+                    "2", "3"), dict))
 
     def test_create_contact(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_contact("2", {"test": "test"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.create_contact(
+                    "2", {
+                        "test": "test"}), dict))
 
     def test_update_contact(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_contact("1", "3", {"test": "test"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_contact(
+                    "1", "3", {
+                        "test": "test"}), dict))
 
     def test_delete_contact(self) -> None:
         self.assertIsNone(self.mocked_object.delete_contact("1", "3"))

@@ -31,9 +31,11 @@ class ResourceCustomerGroups(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_group_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                customer_group_id),
+            self._client.get_basic_headers_for_json())
 
     def create_customer_group(self, payload: dict) -> dict:
         """create_customer_group returns the customer group model as dict on success with the data from the passed payload"""
@@ -45,21 +47,28 @@ class ResourceCustomerGroups(ResourceAbstract):
             payload
         )
 
-    def update_customer_group(self, customer_group_id: str, payload: dict) -> dict:
+    def update_customer_group(
+            self,
+            customer_group_id: str,
+            payload: dict) -> dict:
         """update_customer_group updates the reference (id) customer group with the given payload. Returns the updated customer group model"""
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_group_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                customer_group_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_customer_group(self, customer_group_id: str) -> None:
         """delete_customer_group returns None on success and raises an exception if the customer-group couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_group_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                customer_group_id),
+            self._client.get_basic_headers())

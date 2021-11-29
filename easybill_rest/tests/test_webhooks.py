@@ -17,16 +17,22 @@ class TestResourceWebhooks(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/webhooks", Client('').webhooks()._endpoint)
 
     def test_get_webhooks(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_webhooks({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_webhooks({"page": "2"}), dict))
 
     def test_get_webhook(self) -> None:
         self.assertTrue(isinstance(self.mocked_object.get_webhook("3"), dict))
 
     def test_create_webhooks(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_webhook({"test": "test"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.create_webhook({"test": "test"}), dict))
 
     def test_update_webhook(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_webhook("3", {"test": "test"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_webhook(
+                    "3", {
+                        "test": "test"}), dict))
 
     def test_delete_webhook(self) -> None:
         self.assertIsNone(self.mocked_object.delete_webhook("3"))
