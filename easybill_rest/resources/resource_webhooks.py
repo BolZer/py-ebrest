@@ -31,9 +31,9 @@ class ResourceWebhooks(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + webhook_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + webhook_id),
+            self._client.get_basic_headers_for_json())
 
     def create_webhook(self, payload: dict) -> dict:
         """create_webhook returns the webhook model as dict on success with the data from the passed payload"""
@@ -50,16 +50,18 @@ class ResourceWebhooks(ResourceAbstract):
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + webhook_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                webhook_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_webhook(self, webhook_id: str) -> None:
         """delete_webhook returns None on success and raises an exception if the webhook couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + webhook_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + webhook_id),
+            self._client.get_basic_headers())

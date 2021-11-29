@@ -26,14 +26,17 @@ class ResourceDiscountPositionGroups(ResourceAbstract):
             self._client.get_basic_headers_for_json()
         )
 
-    def get_position_group_discount(self, position_group_discount_id: str) -> dict:
+    def get_position_group_discount(
+            self, position_group_discount_id: str) -> dict:
         """get_position_group_discount returns the referenced (id) position group discount"""
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_group_discount_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_group_discount_id),
+            self._client.get_basic_headers_for_json())
 
     def create_position_group_discount(self, payload: dict) -> dict:
         """create_position_group_discount returns the position group discount model as dict on success with the data from the passed payload"""
@@ -45,21 +48,29 @@ class ResourceDiscountPositionGroups(ResourceAbstract):
             payload
         )
 
-    def update_position_group_discount(self, position_group_discount_id: str, payload: dict) -> dict:
+    def update_position_group_discount(
+            self,
+            position_group_discount_id: str,
+            payload: dict) -> dict:
         """update_position_group_discount updates the reference (id) position group discount with the given payload. Returns the updated position group discount model"""
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_group_discount_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_group_discount_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
-    def delete_position_group_discount(self, position_group_discount_id: str) -> None:
+    def delete_position_group_discount(
+            self, position_group_discount_id: str) -> None:
         """delete_position_group_discount returns None on success and raises an exception if the discount couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_group_discount_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_group_discount_id),
+            self._client.get_basic_headers())

@@ -31,9 +31,11 @@ class ResourceTimeTrackings(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + time_tracking_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                time_tracking_id),
+            self._client.get_basic_headers_for_json())
 
     def create_time_tracking(self, payload: dict) -> dict:
         """create_time_tracking returns the time tracking model as dict on success with the data from the passed payload"""
@@ -45,21 +47,23 @@ class ResourceTimeTrackings(ResourceAbstract):
             payload
         )
 
-    def update_time_tracking(self, time_tracking_id: str, payload: dict) -> dict:
+    def update_time_tracking(
+            self,
+            time_tracking_id: str,
+            payload: dict) -> dict:
         """update_task updates the reference (id) time tracking with the given payload. Returns the updated time tracking model"""
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + time_tracking_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                time_tracking_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_time_tracking(self, task_id: str) -> None:
         """delete_time_tracking returns None on success and raises an exception if the time tracking couldn't be deleted"""
 
-        self._client.call(
-            "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + task_id),
-            self._client.get_basic_headers()
-        )
+        self._client.call("DELETE", Helper.create_request_url_from_params(
+            self._endpoint + "/" + task_id), self._client.get_basic_headers())

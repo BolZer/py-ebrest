@@ -17,16 +17,22 @@ class TestResourceProjects(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/projects", Client('').projects()._endpoint)
 
     def test_get_projects(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_projects({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_projects({"page": "2"}), dict))
 
     def test_get_pproject(self) -> None:
         self.assertTrue(isinstance(self.mocked_object.get_project("3"), dict))
 
     def test_create_project(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_project({"sale_price": "2000"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.create_project({"sale_price": "2000"}), dict))
 
     def test_update_project(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_project("3", {"sale_price": "2500"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_project(
+                    "3", {
+                        "sale_price": "2500"}), dict))
 
     def test_delete_project(self) -> None:
         self.assertIsNone(self.mocked_object.delete_project("3"))

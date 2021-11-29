@@ -17,16 +17,22 @@ class TestResourcePositions(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/positions", Client('').positions()._endpoint)
 
     def test_get_positions(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_positions({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_positions({"page": "2"}), dict))
 
     def test_get_position(self) -> None:
         self.assertTrue(isinstance(self.mocked_object.get_position("3"), dict))
 
     def test_create_position(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_position({"sale_price": "2000"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.create_position({"sale_price": "2000"}), dict))
 
     def test_update_position(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_position("3", {"sale_price": "2500"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_position(
+                    "3", {
+                        "sale_price": "2500"}), dict))
 
     def test_delete_position(self) -> None:
         self.assertIsNone(self.mocked_object.delete_position("3"))

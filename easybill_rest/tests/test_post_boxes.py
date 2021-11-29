@@ -17,7 +17,8 @@ class TestResourcePostBoxes(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/post-boxes", Client('').post_boxes()._endpoint)
 
     def test_get_post_boxes(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_post_boxes({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_post_boxes({"page": "2"}), dict))
 
     def test_get_post_box(self) -> None:
         self.assertTrue(isinstance(self.mocked_object.get_post_box("3"), dict))

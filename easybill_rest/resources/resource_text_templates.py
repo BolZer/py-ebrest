@@ -31,9 +31,11 @@ class ResourceTextTemplates(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + text_template_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                text_template_id),
+            self._client.get_basic_headers_for_json())
 
     def create_text_template(self, payload: dict) -> dict:
         """create_text_template returns the text template model as dict on success with the data from the passed payload"""
@@ -45,21 +47,28 @@ class ResourceTextTemplates(ResourceAbstract):
             payload
         )
 
-    def update_text_template(self, text_template_id: str, payload: dict) -> dict:
+    def update_text_template(
+            self,
+            text_template_id: str,
+            payload: dict) -> dict:
         """update_text_template updates the reference (id) task with the given payload. Returns the updated text template model"""
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + text_template_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                text_template_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_text_template(self, text_template_id: str) -> None:
         """delete_text_template returns None on success and raises an exception if the text template couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + text_template_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                text_template_id),
+            self._client.get_basic_headers())

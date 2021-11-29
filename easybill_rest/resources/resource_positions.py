@@ -31,9 +31,9 @@ class ResourcePositions(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + position_id),
+            self._client.get_basic_headers_for_json())
 
     def create_position(self, payload: dict) -> dict:
         """create_position returns the position model as dict on success with the data from the passed payload"""
@@ -50,16 +50,18 @@ class ResourcePositions(ResourceAbstract):
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_position(self, position_id: str) -> None:
         """delete_position returns None on success and raises an exception if the position couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + position_id),
+            self._client.get_basic_headers())

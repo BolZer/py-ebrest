@@ -31,9 +31,11 @@ class ResourceSerialNumbers(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + serial_number_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                serial_number_id),
+            self._client.get_basic_headers_for_json())
 
     def create_serial_number(self, payload: dict) -> dict:
         """create_serial_number returns the serial number model as dict on success with the data from the passed payload"""
@@ -50,6 +52,8 @@ class ResourceSerialNumbers(ResourceAbstract):
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + serial_number_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                serial_number_id),
+            self._client.get_basic_headers())

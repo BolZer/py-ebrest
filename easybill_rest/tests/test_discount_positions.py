@@ -6,7 +6,9 @@ from easybill_rest.resources.resource_discount_positions import ResourceDiscount
 from easybill_rest.tests.test_case_abstract import EasybillRestTestCaseAbstract
 
 
-class TestResourceDiscountPositions(unittest.TestCase, EasybillRestTestCaseAbstract):
+class TestResourceDiscountPositions(
+        unittest.TestCase,
+        EasybillRestTestCaseAbstract):
 
     def setUp(self) -> None:
         mocked_object = mock.Mock()
@@ -14,19 +16,29 @@ class TestResourceDiscountPositions(unittest.TestCase, EasybillRestTestCaseAbstr
         self.mocked_object = ResourceDiscountPositions(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/discounts/position", Client('').discount_positions()._endpoint)
+        self.assertEqual("/discounts/position",
+                         Client('').discount_positions()._endpoint)
 
     def test_get_position_discounts(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_position_discounts({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_position_discounts({"page": "2"}), dict))
 
     def test_get_position_discount(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_position_discount("3"), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.get_position_discount("3"),
+                dict))
 
     def test_create_position_discount(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_position_discount({"test": "test"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.create_position_discount({"test": "test"}), dict))
 
     def test_update_position_discount(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_position_discount("3", {"test": "test"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_position_discount(
+                    "3", {
+                        "test": "test"}), dict))
 
     def test_delete_position_discount(self) -> None:
         self.assertIsNone(self.mocked_object.delete_position_discount("3"))

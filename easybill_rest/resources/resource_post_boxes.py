@@ -31,15 +31,15 @@ class ResourcePostBoxes(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + post_box_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + post_box_id),
+            self._client.get_basic_headers_for_json())
 
     def delete_post_box(self, post_box_id: str) -> None:
         """delete_post_box returns None on success and raises an exception if the post box couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + post_box_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + post_box_id),
+            self._client.get_basic_headers())

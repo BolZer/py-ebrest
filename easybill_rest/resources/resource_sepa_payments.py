@@ -31,9 +31,9 @@ class ResourceSepaPayments(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + sepa_payment_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + sepa_payment_id),
+            self._client.get_basic_headers_for_json())
 
     def create_sepa_payment(self, payload: dict) -> dict:
         """create_sepa_payment returns the sepa payment model as dict on success with the data from the passed payload"""
@@ -50,16 +50,20 @@ class ResourceSepaPayments(ResourceAbstract):
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + sepa_payment_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                sepa_payment_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_sepa_payment(self, sepa_payment_id: str) -> None:
         """delete_sepa_payment returns None on success and raises an exception if the sepa payment couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + sepa_payment_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                sepa_payment_id),
+            self._client.get_basic_headers())

@@ -17,13 +17,15 @@ class TestResourceStocks(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/stocks", Client('').stocks()._endpoint)
 
     def test_get_stocks(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_stocks({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_stocks({"page": "2"}), dict))
 
     def test_get_stock(self) -> None:
         self.assertTrue(isinstance(self.mocked_object.get_stock("3"), dict))
 
     def test_create_stock(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_stock({"count": "2000"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.create_stock({"count": "2000"}), dict))
 
     @staticmethod
     def get_suite() -> unittest.TestSuite:

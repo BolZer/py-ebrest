@@ -21,13 +21,11 @@ setup(
     python_requires='>=3.7.0',
     version="0.2.1",
     install_requires=[
-        "requests",
-        "nose<2",
+            "requests",
+            "nose<2",
     ],
     extras_require={
         'dev': [
             "coverage<5"
             "wheel",
-        ]
-    }
-)
+        ]})

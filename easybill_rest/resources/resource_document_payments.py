@@ -31,9 +31,11 @@ class ResourceDocumentPayments(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + document_payment_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                document_payment_id),
+            self._client.get_basic_headers_for_json())
 
     def create_document_payment(self, payload: dict) -> dict:
         """create_document_payment returns the document payment model as dict on success with the data from the passed payload"""
@@ -50,6 +52,8 @@ class ResourceDocumentPayments(ResourceAbstract):
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + document_payment_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                document_payment_id),
+            self._client.get_basic_headers())

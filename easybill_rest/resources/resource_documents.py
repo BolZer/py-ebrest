@@ -38,9 +38,9 @@ class ResourceDocuments(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + document_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + document_id),
+            self._client.get_basic_headers_for_json())
 
     def create_document(self, payload: dict) -> dict:
         """create_document returns the document model as dict on success with the data from the passed payload"""
@@ -57,52 +57,72 @@ class ResourceDocuments(ResourceAbstract):
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + document_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                document_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_document(self, document_id: str) -> None:
         """delete_document returns None on success and raises an exception if the document couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + document_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + document_id),
+            self._client.get_basic_headers())
 
     def finalize_document(self, document_id: str) -> dict:
         """finalize_document returns the finalized document on success"""
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + document_id + "/done"),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                document_id +
+                "/done"),
+            self._client.get_basic_headers_for_json())
 
     def cancel_document(self, document_id: str) -> dict:
         """cancel_document returns the canceled document on success"""
 
         return self._client.call(
             "POST",
-            Helper.create_request_url_from_params(self._endpoint + "/" + document_id + "/cancel"),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                document_id +
+                "/cancel"),
+            self._client.get_basic_headers_for_json())
 
-    def send_document(self, document_id: str, send_method: SendMethod, payload: dict) -> None:
+    def send_document(
+            self,
+            document_id: str,
+            send_method: SendMethod,
+            payload: dict) -> None:
         """send_document returns None on success and rises exception on failure"""
 
         self._client.call(
             "POST",
-            Helper.create_request_url_from_params(self._endpoint + "/" + document_id + "/send/" + str(send_method)),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                document_id +
+                "/send/" +
+                str(send_method)),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def download_document(self, document_id: str) -> bytes:
         """download_document returns the document as bytes on success"""
 
         return self._client.download(
-            Helper.create_request_url_from_params(self._endpoint + "/" + document_id + "/pdf"),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                document_id +
+                "/pdf"),
             self._client.get_basic_headers_for_pdf(),
         )

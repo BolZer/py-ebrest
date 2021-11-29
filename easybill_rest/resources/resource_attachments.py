@@ -31,9 +31,9 @@ class ResourceAttachments(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + attachment_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + attachment_id),
+            self._client.get_basic_headers_for_json())
 
     def create_attachment(self, payload: bytes) -> dict:
         """create_attachment returns the attachment model as dict on success with the data from the passed payload"""
@@ -49,24 +49,28 @@ class ResourceAttachments(ResourceAbstract):
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + attachment_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                attachment_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_attachment(self, attachment_id: str) -> None:
         """delete_attachment returns None on success and raises an exception if the attachment couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + attachment_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                attachment_id),
+            self._client.get_basic_headers())
 
     def get_content(self, attachment_id: str, headers: dict = None) -> bytes:
         """get_content returns None on success and raises an exception if the attachment couldn't be deleted"""
 
         return self._client.download(
-            Helper.create_request_url_from_params(self._endpoint + "/" + attachment_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint + "/" + attachment_id),
+            self._client.get_basic_headers())

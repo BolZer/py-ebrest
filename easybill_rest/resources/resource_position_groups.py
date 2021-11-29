@@ -31,9 +31,11 @@ class ResourcePositionGroups(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_group_id),
-            self._client.get_basic_headers_for_json()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_group_id),
+            self._client.get_basic_headers_for_json())
 
     def create_position_group(self, payload: dict) -> dict:
         """create_position_group returns the position group model as dict on success with the data from the passed payload"""
@@ -45,21 +47,28 @@ class ResourcePositionGroups(ResourceAbstract):
             payload
         )
 
-    def update_position_group(self, position_group_id: str, payload: dict) -> dict:
+    def update_position_group(
+            self,
+            position_group_id: str,
+            payload: dict) -> dict:
         """update_position_group updates the reference (id) position group with the given payload. Returns the updated position group model"""
 
         return self._client.call(
             "PUT",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_group_id),
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_group_id),
             self._client.get_basic_headers_for_json(),
-            payload
-        )
+            payload)
 
     def delete_position_group(self, position_group_id: str) -> None:
         """delete_position_group returns None on success and raises an exception if the position group couldn't be deleted"""
 
         self._client.call(
             "DELETE",
-            Helper.create_request_url_from_params(self._endpoint + "/" + position_group_id),
-            self._client.get_basic_headers()
-        )
+            Helper.create_request_url_from_params(
+                self._endpoint +
+                "/" +
+                position_group_id),
+            self._client.get_basic_headers())

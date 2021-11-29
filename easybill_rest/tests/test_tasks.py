@@ -17,16 +17,22 @@ class TestResourceTasks(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual("/tasks", Client('').tasks()._endpoint)
 
     def test_get_tasks(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.get_tasks({"page": "2"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.get_tasks({"page": "2"}), dict))
 
     def test_get_task(self) -> None:
         self.assertTrue(isinstance(self.mocked_object.get_task("3"), dict))
 
     def test_create_task(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.create_task({"sale_price": "2000"}), dict))
+        self.assertTrue(isinstance(
+            self.mocked_object.create_task({"sale_price": "2000"}), dict))
 
     def test_update_task(self) -> None:
-        self.assertTrue(isinstance(self.mocked_object.update_task("3", {"sale_price": "2500"}), dict))
+        self.assertTrue(
+            isinstance(
+                self.mocked_object.update_task(
+                    "3", {
+                        "sale_price": "2500"}), dict))
 
     def test_delete_task(self) -> None:
         self.assertIsNone(self.mocked_object.delete_task("3"))
