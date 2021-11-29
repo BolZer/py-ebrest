@@ -1,5 +1,8 @@
 CHANGELOG
 =========
+* 0.2.1 (2021-11-29)
+    * Fixed release
+
 * 0.2.0 (2021-11-29)
     * An issue with the contact resource url was fixed
 
