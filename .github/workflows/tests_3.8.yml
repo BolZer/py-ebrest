@@ -1,4 +1,4 @@
-name: Python Tests 3.8
+name: Python Tests 3.8 (nosetests)
 on:
   push:
     branches:
