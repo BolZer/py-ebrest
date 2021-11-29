@@ -22,7 +22,7 @@ class ResourceContacts(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id + "contacts", params),
+            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id + "/" + "contacts", params),
             self._client.get_basic_headers_for_json()
         )
 
@@ -31,7 +31,7 @@ class ResourceContacts(ResourceAbstract):
 
         return self._client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id + "contacts" + "/" + contact_id),
+            Helper.create_request_url_from_params(self._endpoint + "/" + customer_id + "/" + "contacts" + "/" + contact_id),
             self._client.get_basic_headers_for_json()
         )
 
