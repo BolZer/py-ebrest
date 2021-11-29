@@ -165,7 +165,12 @@ class Client:
 
         return ResourceAttachments(self)
 
-    def call(self, method: str, request_url: str, headers: dict, passed_payload: dict = None) -> dict:
+    def call(
+            self,
+            method: str,
+            request_url: str,
+            headers: dict,
+            passed_payload: dict = None) -> dict:
         """
             call calls the easybill api with the prepared connection.
             :raises: RequestException
@@ -236,7 +241,10 @@ class Client:
             :raises: RequestException
         """
 
-        response = self._requests.get(self._base_url + request_url, headers=headers, timeout=self.timeout)
+        response = self._requests.get(
+            self._base_url + request_url,
+            headers=headers,
+            timeout=self.timeout)
         response.raise_for_status()
 
         return response.content
