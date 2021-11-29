@@ -8,7 +8,6 @@ on:
     branches:
       - master
 
-
 jobs:
   build:
 
@@ -20,10 +19,11 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: 3.7
-    - name: Install Requirements
+    - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install pylint
-    - name: Run Pylint
+        pip install -r requirements.txt
+    - name: Lint with pylint
       run: |
-        python lint.py --path ./easybill_rest --threshold 2
+        pip install pylint
+        pylint ./easybill_rest
