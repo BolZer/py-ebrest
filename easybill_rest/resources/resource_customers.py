@@ -11,7 +11,7 @@ if TYPE_CHECKING:
 
 class ResourceCustomers(ResourceAbstract):
     _endpoint: str = "/customers"
-    _client: Client = None
+    _client: Client
 
     def __init__(self, client: Client) -> None:
         super().__init__()
