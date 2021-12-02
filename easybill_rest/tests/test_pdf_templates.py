@@ -18,7 +18,7 @@ class TestResourcePdfTemplates(
     def test_get_endpoint(self) -> None:
         self.assertEqual(
             "/pdf-templates",
-            Client('').pdf_templates()._endpoint)
+            Client('').pdf_templates().get_resource_endpoint())
 
     def test_get_pdf_templates(self) -> None:
         self.assertTrue(isinstance(

@@ -1,4 +1,4 @@
-name: Python Lint (Pylint)
+name: Python Static Type Checking (MyPy)
 
 on:
   push:
@@ -25,5 +25,5 @@ jobs:
         pip install -r requirements.txt
     - name: Lint with pylint
       run: |
-        pip install pylint
-        pylint ./easybill_rest --rcfile=./pylint.rc
+        pip install mypy
+        mypy --ignore-missing-imports ./easybill_rest/resources/ ./easybill_rest/__init__.py ./easybill_rest/helper.py

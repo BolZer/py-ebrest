@@ -13,9 +13,12 @@ class ResourceAbstract(ABC):
         super().__init__()
 
     @property
-    def _endpoint(self) -> str:
+    def __endpoint(self) -> str:
         raise NotImplementedError
 
     @property
-    def _client(self) -> Client:
+    def __client(self) -> Client:
         raise NotImplementedError
+
+    def get_resource_endpoint(self):
+        return self.__endpoint

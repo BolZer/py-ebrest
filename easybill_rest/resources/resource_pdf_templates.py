@@ -10,18 +10,21 @@ if TYPE_CHECKING:
 
 
 class ResourcePdfTemplates(ResourceAbstract):
-    _endpoint: str = "/pdf-templates"
-    _client: Client = None
+    __endpoint: str = "/pdf-templates"
+    __client: Client
 
     def __init__(self, client: Client) -> None:
         super().__init__()
-        self._client = client
+        self.__client = client
+
+    def get_resource_endpoint(self):
+        return self.__endpoint
 
     def get_pdf_templates(self, params: dict = None) -> dict:
         """get_pdf_templates returns a dict with pdf-templates objects"""
 
-        return self._client.call(
+        return self.__client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint, params),
-            self._client.get_basic_headers_for_json()
+            Helper.create_request_url_from_params(self.__endpoint, params),
+            self.__client.get_basic_headers_for_json()
         )

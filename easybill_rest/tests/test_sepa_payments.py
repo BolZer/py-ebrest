@@ -18,7 +18,7 @@ class TestResourceSepaPayments(
     def test_get_endpoint(self) -> None:
         self.assertEqual(
             "/sepa-payments",
-            Client('').sepa_payments()._endpoint)
+            Client('').sepa_payments().get_resource_endpoint())
 
     def test_get_sepa_payments(self) -> None:
         self.assertTrue(isinstance(

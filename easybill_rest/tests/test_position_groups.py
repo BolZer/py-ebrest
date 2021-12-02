@@ -18,7 +18,7 @@ class TestResourcePositionGroups(
     def test_get_endpoint(self) -> None:
         self.assertEqual(
             "/position-groups",
-            Client('').position_groups()._endpoint)
+            Client('').position_groups().get_resource_endpoint())
 
     def test_get_position_groups(self) -> None:
         self.assertTrue(isinstance(

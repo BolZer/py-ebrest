@@ -10,50 +10,53 @@ if TYPE_CHECKING:
 
 
 class ResourceDocumentPayments(ResourceAbstract):
-    _endpoint: str = "/document-payments"
-    _client: Client = None
+    __endpoint: str = "/document-payments"
+    __client: Client
 
     def __init__(self, client: Client) -> None:
         super().__init__()
-        self._client = client
+        self.__client = client
+
+    def get_resource_endpoint(self):
+        return self.__endpoint
 
     def get_document_payments(self, params: dict = None) -> dict:
         """get_document_payments returns a dict with document payments objects"""
 
-        return self._client.call(
+        return self.__client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint, params),
-            self._client.get_basic_headers_for_json()
+            Helper.create_request_url_from_params(self.__endpoint, params),
+            self.__client.get_basic_headers_for_json()
         )
 
     def get_document_payment(self, document_payment_id: str) -> dict:
         """get_document_payment returns the referenced (id) document payment"""
 
-        return self._client.call(
+        return self.__client.call(
             "GET",
             Helper.create_request_url_from_params(
-                self._endpoint +
+                self.__endpoint +
                 "/" +
                 document_payment_id),
-            self._client.get_basic_headers_for_json())
+            self.__client.get_basic_headers_for_json())
 
     def create_document_payment(self, payload: dict) -> dict:
         """create_document_payment returns the document payment model as dict on success with the data from the passed payload"""
 
-        return self._client.call(
+        return self.__client.call(
             "POST",
-            Helper.create_request_url_from_params(self._endpoint),
-            self._client.get_basic_headers_for_json(),
+            Helper.create_request_url_from_params(self.__endpoint),
+            self.__client.get_basic_headers_for_json(),
             payload
         )
 
     def delete_document_payment(self, document_payment_id: str) -> None:
         """delete_document_payment returns None on success and raises an exception if the document payment couldn't be deleted"""
 
-        self._client.call(
+        self.__client.call(
             "DELETE",
             Helper.create_request_url_from_params(
-                self._endpoint +
+                self.__endpoint +
                 "/" +
                 document_payment_id),
-            self._client.get_basic_headers())
+            self.__client.get_basic_headers())

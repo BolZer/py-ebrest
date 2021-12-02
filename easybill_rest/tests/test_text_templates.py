@@ -18,7 +18,7 @@ class TestResourceTextTemplates(
     def test_get_endpoint(self) -> None:
         self.assertEqual(
             "/text-templates",
-            Client('').text_templates()._endpoint)
+            Client('').text_templates().get_resource_endpoint())
 
     def test_get_text_templates(self) -> None:
         self.assertTrue(isinstance(

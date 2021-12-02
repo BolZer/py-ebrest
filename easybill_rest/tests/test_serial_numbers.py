@@ -18,7 +18,7 @@ class TestResourceSerialNumbers(
     def test_get_endpoint(self) -> None:
         self.assertEqual(
             "/serial-numbers",
-            Client('').serial_numbers()._endpoint)
+            Client('').serial_numbers().get_resource_endpoint())
 
     def test_get_serial_numbers(self) -> None:
         self.assertTrue(isinstance(

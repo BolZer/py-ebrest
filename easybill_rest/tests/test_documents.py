@@ -14,7 +14,7 @@ class TestResourceDocuments(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.mocked_object = ResourceDocuments(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/documents", Client('').documents()._endpoint)
+        self.assertEqual("/documents", Client('').documents().get_resource_endpoint())
 
     def test_get_documents(self) -> None:
         self.assertTrue(isinstance(self.mocked_object.get_documents(), dict))

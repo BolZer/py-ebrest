@@ -18,7 +18,7 @@ class TestResourceCustomerGroups(
     def test_get_endpoint(self) -> None:
         self.assertEqual(
             "/customer-groups",
-            Client('').customer_groups()._endpoint)
+            Client('').customer_groups().get_resource_endpoint())
 
     def test_get_customer_groups(self) -> None:
         self.assertTrue(isinstance(
