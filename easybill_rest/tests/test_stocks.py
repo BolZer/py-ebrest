@@ -14,7 +14,7 @@ class TestResourceStocks(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.mocked_object = ResourceStocks(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/stocks", Client('').stocks()._endpoint)
+        self.assertEqual("/stocks", Client('').stocks().get_resource_endpoint())
 
     def test_get_stocks(self) -> None:
         self.assertTrue(isinstance(

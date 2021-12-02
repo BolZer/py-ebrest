@@ -14,7 +14,7 @@ class TestResourcePostBoxes(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.mocked_object = ResourcePostBoxes(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/post-boxes", Client('').post_boxes()._endpoint)
+        self.assertEqual("/post-boxes", Client('').post_boxes().get_resource_endpoint())
 
     def test_get_post_boxes(self) -> None:
         self.assertTrue(isinstance(

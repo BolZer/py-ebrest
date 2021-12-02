@@ -1,4 +1,4 @@
-name: Python Lint (Pylint)
+name: Python Static Type Checking (MyPy)
 
 on:
   push:

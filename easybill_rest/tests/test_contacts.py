@@ -14,7 +14,7 @@ class TestResourceContacts(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.mocked_object = ResourceContacts(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/customers", Client('').contacts()._endpoint)
+        self.assertEqual("/customers", Client('').contacts().get_resource_endpoint())
 
     def test_get_contacts(self) -> None:
         self.assertTrue(

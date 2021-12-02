@@ -17,7 +17,7 @@ class TestResourceDocumentPayments(
 
     def test_get_endpoint(self) -> None:
         self.assertEqual("/document-payments",
-                         Client('').document_payments()._endpoint)
+                         Client('').document_payments().get_resource_endpoint())
 
     def test_get_document_payments(self) -> None:
         self.assertTrue(isinstance(

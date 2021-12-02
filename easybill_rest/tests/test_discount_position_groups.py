@@ -17,7 +17,7 @@ class TestResourceDiscountPositionGroups(
 
     def test_get_endpoint(self) -> None:
         self.assertEqual("/discounts/position-group",
-                         Client('').discount_position_groups()._endpoint)
+                         Client('').discount_position_groups().get_resource_endpoint())
 
     def test_get_position_group_discounts(self) -> None:
         self.assertTrue(isinstance(

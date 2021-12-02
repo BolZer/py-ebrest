@@ -14,7 +14,7 @@ class TestResourceTasks(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.mocked_object = ResourceTasks(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/tasks", Client('').tasks()._endpoint)
+        self.assertEqual("/tasks", Client('').tasks().get_resource_endpoint())
 
     def test_get_tasks(self) -> None:
         self.assertTrue(isinstance(

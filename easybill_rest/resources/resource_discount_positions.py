@@ -10,40 +10,43 @@ if TYPE_CHECKING:
 
 
 class ResourceDiscountPositions(ResourceAbstract):
-    _endpoint: str = "/discounts/position"
-    _client: Client
+    __endpoint: str = "/discounts/position"
+    __client: Client
 
     def __init__(self, client: Client) -> None:
         super().__init__()
-        self._client = client
+        self.__client = client
+
+    def get_resource_endpoint(self):
+        return self.__endpoint
 
     def get_position_discounts(self, params: dict = None) -> dict:
         """get_position_discounts returns a dict with position discount objects"""
 
-        return self._client.call(
+        return self.__client.call(
             "GET",
-            Helper.create_request_url_from_params(self._endpoint, params),
-            self._client.get_basic_headers_for_json()
+            Helper.create_request_url_from_params(self.__endpoint, params),
+            self.__client.get_basic_headers_for_json()
         )
 
     def get_position_discount(self, position_discount_id: str) -> dict:
         """get_position_discount returns the referenced (id) position discount"""
 
-        return self._client.call(
+        return self.__client.call(
             "GET",
             Helper.create_request_url_from_params(
-                self._endpoint +
+                self.__endpoint +
                 "/" +
                 position_discount_id),
-            self._client.get_basic_headers_for_json())
+            self.__client.get_basic_headers_for_json())
 
     def create_position_discount(self, payload: dict) -> dict:
         """create_position_discount returns the position discount model as dict on success with the data from the passed payload"""
 
-        return self._client.call(
+        return self.__client.call(
             "POST",
-            Helper.create_request_url_from_params(self._endpoint),
-            self._client.get_basic_headers_for_json(),
+            Helper.create_request_url_from_params(self.__endpoint),
+            self.__client.get_basic_headers_for_json(),
             payload
         )
 
@@ -53,22 +56,22 @@ class ResourceDiscountPositions(ResourceAbstract):
             payload: dict) -> dict:
         """update_position_discount updates the reference (id) position discount with the given payload. Returns the updated position discount model"""
 
-        return self._client.call(
+        return self.__client.call(
             "PUT",
             Helper.create_request_url_from_params(
-                self._endpoint +
+                self.__endpoint +
                 "/" +
                 position_discount_id),
-            self._client.get_basic_headers_for_json(),
+            self.__client.get_basic_headers_for_json(),
             payload)
 
     def delete_position_discount(self, position_discount_id: str) -> None:
         """delete_position_discount returns None on success and raises an exception if the discount couldn't be deleted"""
 
-        self._client.call(
+        self.__client.call(
             "DELETE",
             Helper.create_request_url_from_params(
-                self._endpoint +
+                self.__endpoint +
                 "/" +
                 position_discount_id),
-            self._client.get_basic_headers())
+            self.__client.get_basic_headers())

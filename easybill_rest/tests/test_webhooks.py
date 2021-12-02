@@ -14,7 +14,7 @@ class TestResourceWebhooks(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.mocked_object = ResourceWebhooks(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/webhooks", Client('').webhooks()._endpoint)
+        self.assertEqual("/webhooks", Client('').webhooks().get_resource_endpoint())
 
     def test_get_webhooks(self) -> None:
         self.assertTrue(isinstance(

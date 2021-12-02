@@ -16,7 +16,7 @@ class TestResourceAttachments(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.mocked_object = ResourceAttachments(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/attachments", Client('').attachments()._endpoint)
+        self.assertEqual("/attachments", Client('').attachments().get_resource_endpoint())
 
     def test_get_attachments(self) -> None:
         self.assertTrue(isinstance(

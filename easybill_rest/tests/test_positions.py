@@ -14,7 +14,7 @@ class TestResourcePositions(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.mocked_object = ResourcePositions(mocked_object)
 
     def test_get_endpoint(self) -> None:
-        self.assertEqual("/positions", Client('').positions()._endpoint)
+        self.assertEqual("/positions", Client('').positions().get_resource_endpoint())
 
     def test_get_positions(self) -> None:
         self.assertTrue(isinstance(
