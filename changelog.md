@@ -1,5 +1,8 @@
 CHANGELOG
 =========
+* 0.3.0 (2022-03-30)
+    * Add support for request params in update document
+
 * 0.2.1 (2021-11-29)
     * Fixed release
 
