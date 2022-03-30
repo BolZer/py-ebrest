@@ -55,7 +55,7 @@ class ResourceDocuments(ResourceAbstract):
             payload
         )
 
-    def update_document(self, document_id: str, payload: dict) -> dict:
+    def update_document(self, document_id: str, payload: dict, params: dict = None) -> dict:
         """update_document updates the reference (id) document with the given payload. Returns the updated document"""
 
         return self.__client.call(
@@ -63,7 +63,9 @@ class ResourceDocuments(ResourceAbstract):
             Helper.create_request_url_from_params(
                 self.__endpoint +
                 "/" +
-                document_id),
+                document_id,
+                params
+            ),
             self.__client.get_basic_headers_for_json(),
             payload)
 
