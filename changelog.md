@@ -1,5 +1,8 @@
 CHANGELOG
 =========
+* 0.3.1 (2023-02-28)
+    * Fixed security issue in certifi
+
 * 0.3.0 (2022-03-30)
     * Add support for request params in update document
 
