@@ -26,6 +26,6 @@ setup(
     ],
     extras_require={
         'dev': [
-            "coverage<5",
+            "coverage<5"
             "wheel",
         ]})
