@@ -24,7 +24,7 @@ from easybill_rest.resources.resource_webhooks import ResourceWebhooks
 
 
 class Client:
-    _version: str = "0.3.1"
+    _version: str = "0.3.2"
     _base_url: str = "https://api.easybill.de"
     _requests = requests
 
