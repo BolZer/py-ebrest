@@ -19,13 +19,13 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     python_requires='>=3.7.0',
-    version="0.3.2",
+    version="0.3.1",
     install_requires=[
             "requests",
             "nose<2",
     ],
     extras_require={
         'dev': [
-            "coverage<5"
+            "coverage<5",
             "wheel",
         ]})
