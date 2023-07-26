@@ -15,11 +15,11 @@ setup(
     url="https://github.com/BolZer/py-ebrest",
     packages=setuptools.find_packages(),
     classifiers=[
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.11",
         "License :: OSI Approved :: MIT License",
     ],
-    python_requires='>=3.7.0',
-    version="0.3.3",
+    python_requires='>=3.11.0',
+    version="0.4.0",
     install_requires=[
             "requests",
     ],

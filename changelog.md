@@ -1,6 +1,7 @@
 CHANGELOG
 =========
-* 0.3.3 (2023-07-26)
+* 0.4.0 (2023-07-26)
+    * Change Python Version requirement to 3.11
     * Bump dependencies
 
 * 0.3.2 (2023-05-31)

@@ -1,4 +1,4 @@
-astroid==2.9.0
+astroid==2.15.4
 autopep8==1.6.0
 bleach==4.0.0
 certifi==2023.7.22
@@ -22,7 +22,7 @@ platformdirs==2.4.0
 pluggy==1.2.0
 pycodestyle==2.8.0
 Pygments==2.15.0
-pylint==2.12.1
+pylint==2.17.4
 pyparsing==2.4.7
 pytest==7.4.0
 readme-renderer==29.0
@@ -37,6 +37,6 @@ types-requests==2.26.1
 typing_extensions==4.0.0
 urllib3==1.26.6
 webencodings==0.5.1
-wrapt==1.13.3
+wrapt==1.15.0
 yarg==0.1.9
 zipp==3.5.0
