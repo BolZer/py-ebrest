@@ -1,5 +1,10 @@
 CHANGELOG
 =========
+* 0.4.0 (2023-07-26)
+    * Change Python Version requirement to 3.11
+    * Switch from nose to pytest
+    * Bump dependencies with security issues
+
 * 0.3.2 (2023-05-31)
     * Fixed an issue with the setup.py breaking installation from pypi
 
