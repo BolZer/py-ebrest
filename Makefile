@@ -1,5 +1,5 @@
 test:
-	nosetests
+	pytest
 
 build:
 	python setup.py sdist

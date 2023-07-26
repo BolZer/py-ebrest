@@ -1,5 +1,8 @@
 CHANGELOG
 =========
+* 0.3.3 (2023-07-26)
+    * Bump dependencies
+
 * 0.3.2 (2023-05-31)
     * Fixed an issue with the setup.py breaking installation from pypi
 
