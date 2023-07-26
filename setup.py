@@ -22,10 +22,12 @@ setup(
     version="0.3.3",
     install_requires=[
             "requests",
-            "nose<2",
     ],
     extras_require={
         'dev': [
             "coverage<5",
             "wheel",
-        ]})
+            "pytest<8",
+        ]
+    }
+)
