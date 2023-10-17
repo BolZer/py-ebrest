@@ -23,4 +23,4 @@ jobs:
     - uses: yaananth/twine-upload@v1
       env:
         RUNNER: ${{ toJson(runner) }}
-        SECRETS: ${{ toJson(${{ secrets.PYPI_TOKEN }}) }}
+        SECRETS: ${{ toJson(secrets.PYPI_TOKEN) }}
