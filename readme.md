@@ -26,7 +26,7 @@ from easybill_rest import Client
 client = Client("API-KEY")
 result = client.documents().get_document("2")
 
-# Returns the document model. Therefore a field "title" is included in the dict.
+# Returns the document model. Therefore, a field "title" is included in the dict.
 print(result['title'])
 
 ```
