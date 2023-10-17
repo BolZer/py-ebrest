@@ -1,5 +1,5 @@
 # easybill_rest (py-ebrest)
-[![Generic badge](https://img.shields.io/badge/Version-0.4.0-important.svg)]()
+[![Generic badge](https://img.shields.io/badge/Version-0.4.1-important.svg)]()
 [![Generic badge](https://img.shields.io/badge/coverage-97%25-success.svg)]()
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/easybill_rest.svg)
 [![Generic badge](https://img.shields.io/badge/License-MIT-blue.svg)]()
@@ -26,7 +26,7 @@ from easybill_rest import Client
 client = Client("API-KEY")
 result = client.documents().get_document("2")
 
-# Returns the document model. Therefore a field "title" is included in the dict.
+# Returns the document model. Therefore, a field "title" is included in the dict.
 print(result['title'])
 
 ```

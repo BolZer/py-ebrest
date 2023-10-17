@@ -1,0 +1,26 @@
+name: Publish to 📦 PyPI and 📦 TestPyPI
+
+on:
+  release:
+    types: [created]
+
+jobs:
+  build:
+    name: Build distribution
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+
+    - name: Build sdist
+      run: python setup.py sdist
+
+    - uses: yaananth/twine-upload@v1
+      env:
+        RUNNER: ${{ toJson(runner) }}
+        SECRETS: ${{ toJson(secrets) }}

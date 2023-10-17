@@ -1,5 +1,8 @@
 CHANGELOG
 =========
+* 0.4.1 (2023-10-17) 
+    * Update urllib3 to v. 1.26.17
+
 * 0.4.0 (2023-07-26)
     * Change Python Version requirement to 3.11
     * Switch from nose to pytest
