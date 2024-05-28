@@ -25,7 +25,7 @@ from easybill_rest.resources.resource_document_versions import ResourceDocumentV
 
 
 class Client:
-    _version: str = "0.4.1"
+    _version: str = "0.5.0"
     _base_url: str = "https://api.easybill.de"
     _requests = requests
 

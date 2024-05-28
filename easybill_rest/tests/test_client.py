@@ -32,7 +32,7 @@ from easybill_rest.tests.test_case_abstract import EasybillRestTestCaseAbstract
 class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
 
     def test_client_version(self) -> None:
-        self.assertEqual('0.4.1', Client('')._version)
+        self.assertEqual('0.5.0', Client('')._version)
 
     def test_client_base_url(self) -> None:
         self.assertEqual('https://api.easybill.de', Client('')._base_url)
@@ -96,7 +96,7 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
 
         header = {
             'Authorization': 'Bearer Test',
-            'User-Agent': 'py-ebrest 0.4.1',
+            'User-Agent': 'py-ebrest 0.5.0',
             'Content-type': 'application/json'
         }
 

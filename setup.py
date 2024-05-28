@@ -19,7 +19,7 @@ setup(
         "License :: OSI Approved :: MIT License",
     ],
     python_requires='>=3.11.0',
-    version="0.4.1",
+    version="0.5.0",
     install_requires=[
             "requests",
     ],
