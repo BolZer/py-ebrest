@@ -132,7 +132,7 @@ class ResourceDocuments(ResourceAbstract):
             self.__client.get_basic_headers_for_pdf(),
         )
 
-    def download_document_as_jpeg(self, document_id: str) -> bytes:
+    def download_document_as_jpeg(self, document_id: str, params: dict = None) -> bytes:
         """download_document_as_jpeg returns the document jpeg as bytes on success"""
 
         return self.__client.download(
@@ -140,6 +140,6 @@ class ResourceDocuments(ResourceAbstract):
                 self.__endpoint +
                 "/" +
                 document_id +
-                "/jpg"),
+                "/jpg", params),
             self.__client.get_basic_headers_for_pdf(),
         )
