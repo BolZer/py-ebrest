@@ -71,9 +71,9 @@ class ResourceAttachments(ResourceAbstract):
             self.__client.get_basic_headers())
 
     def get_content(self, attachment_id: str, headers: dict = None) -> bytes:
-        """get_content returns None on success and raises an exception if the attachment couldn't be deleted"""
+        """get_content returns the attachment as bytes on success"""
 
         return self.__client.download(
             Helper.create_request_url_from_params(
-                self.__endpoint + "/" + attachment_id),
+                self.__endpoint + "/" + attachment_id + "/content"),
             self.__client.get_basic_headers())
