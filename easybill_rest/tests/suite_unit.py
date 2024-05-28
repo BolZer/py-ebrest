@@ -54,6 +54,7 @@ class UnitTestSuite(unittest.TestSuite):
             TestResourceTasks.get_suite(),
             TestResourceTextTemplates.get_suite(),
             TestResourceWebhooks.get_suite(),
+            TestDocum
             TestEaybillTestCaseAbstract.get_suite()
         ])
 

@@ -25,6 +25,7 @@ from easybill_rest.resources.resource_tasks import ResourceTasks
 from easybill_rest.resources.resource_text_templates import ResourceTextTemplates
 from easybill_rest.resources.resource_time_trackings import ResourceTimeTrackings
 from easybill_rest.resources.resource_webhooks import ResourceWebhooks
+from easybill_rest.resources.resource_document_versions import ResourceDocumentVersions
 from easybill_rest.tests.test_case_abstract import EasybillRestTestCaseAbstract
 
 
@@ -229,6 +230,12 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
                 Client('').time_trackings(),
                 ResourceTimeTrackings))
 
+    def test_get_document_versions(self) -> None:
+        self.assertTrue(
+            isinstance(
+                Client('').document_versions(),
+                ResourceDocumentVersions))
+
     @staticmethod
     def get_suite() -> unittest.TestSuite:
         return unittest.TestSuite(map(TestClient, [
@@ -268,4 +275,5 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
             'test_get_discount_position_groups',
             'test_get_attachments',
             'test_get_time_trackings',
+            'test_get_document_versions'
         ]))
