@@ -53,12 +53,20 @@ class TestResourceDocuments(unittest.TestCase, EasybillRestTestCaseAbstract):
             self.mocked_object.send_document(
                 "3", SendMethod.EMAIL, {}))
 
-    def test_download_document(self) -> None:
+    def test_download_document_as_pdf(self) -> None:
         mocked_object = mock.Mock()
         mocked_object.download = mock.Mock(return_value=bytes('test', 'utf-8'))
         self.assertTrue(
             isinstance(
-                ResourceDocuments(mocked_object).download_document("3"),
+                ResourceDocuments(mocked_object).download_document_as_pdf("3"),
+                bytes))
+
+    def test_download_document_as_jpeg(self) -> None:
+        mocked_object = mock.Mock()
+        mocked_object.download = mock.Mock(return_value=bytes('test', 'utf-8'))
+        self.assertTrue(
+            isinstance(
+                ResourceDocuments(mocked_object).download_document_as_jpeg("3"),
                 bytes))
 
     @staticmethod
@@ -73,5 +81,6 @@ class TestResourceDocuments(unittest.TestCase, EasybillRestTestCaseAbstract):
             'test_finalize_document',
             'test_cancel_document',
             'test_send_document',
-            'test_download_document'
+            'test_download_document_as_pdf',
+            'test_download_document_as_jpeg'
         ]))
