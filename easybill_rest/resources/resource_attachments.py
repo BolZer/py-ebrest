@@ -48,7 +48,8 @@ class ResourceAttachments(ResourceAbstract):
         )
 
     def update_attachment(self, attachment_id: str, payload: dict) -> dict:
-        """update_attachment updates the reference (id) attachment with the given payload. Returns a part of the updated attachment model"""
+        """update_attachment updates the reference (id) attachment with the given payload. Returns a part of the
+        updated attachment model"""
 
         return self.__client.call(
             "PUT",
@@ -70,7 +71,7 @@ class ResourceAttachments(ResourceAbstract):
                 attachment_id),
             self.__client.get_basic_headers())
 
-    def get_content(self, attachment_id: str, headers: dict = None) -> bytes:
+    def get_content(self, attachment_id: str) -> bytes:
         """get_content returns the attachment as bytes on success"""
 
         return self.__client.download(

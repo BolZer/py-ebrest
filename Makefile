@@ -18,3 +18,6 @@ lint:
 
 fix:
 	autopep8 --in-place --aggressive --aggressive --recursive ./easybill_rest/
+
+test_workflows:
+	act --rm --quiet --workflows ./.github/workflows
