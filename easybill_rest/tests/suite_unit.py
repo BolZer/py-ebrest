@@ -24,7 +24,7 @@ from easybill_rest.tests.test_tasks import TestResourceTasks
 from easybill_rest.tests.test_test_case_abstract import TestEaybillTestCaseAbstract
 from easybill_rest.tests.test_text_templates import TestResourceTextTemplates
 from easybill_rest.tests.test_webhooks import TestResourceWebhooks
-
+from easybill_rest.tests.test_document_versions import TestResourceDocumentVersions
 
 class UnitTestSuite(unittest.TestSuite):
 
@@ -54,6 +54,7 @@ class UnitTestSuite(unittest.TestSuite):
             TestResourceTasks.get_suite(),
             TestResourceTextTemplates.get_suite(),
             TestResourceWebhooks.get_suite(),
+            TestResourceDocumentVersions.get_suite(),
             TestEaybillTestCaseAbstract.get_suite()
         ])
 

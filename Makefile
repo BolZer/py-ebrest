@@ -10,6 +10,9 @@ build_and_upload_test:
 build_and_upload:
 	python setup.py sdist && twine check dist/* && twine upload dist/*
 
+install_deps:
+	pip install -r requirements.txt
+
 static_type_checker:
 	mypy --ignore-missing-imports ./easybill_rest/resources/ ./easybill_rest/__init__.py ./easybill_rest/helper.py
 
@@ -18,3 +21,6 @@ lint:
 
 fix:
 	autopep8 --in-place --aggressive --aggressive --recursive ./easybill_rest/
+
+test_workflows:
+	act --rm --quiet --workflows ./.github/workflows

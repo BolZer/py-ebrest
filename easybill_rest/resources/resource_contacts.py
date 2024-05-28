@@ -50,7 +50,8 @@ class ResourceContacts(ResourceAbstract):
             self.__client.get_basic_headers_for_json())
 
     def create_contact(self, customer_id: str, payload: dict) -> dict:
-        """create_contact returns the contact model as dict on success with the data from the passed payload for the referenced customer"""
+        """create_contact returns the contact model as dict on success with the data from the passed payload for the
+        referenced customer"""
 
         return self.__client.call(
             "POST",
@@ -68,7 +69,8 @@ class ResourceContacts(ResourceAbstract):
             customer_id: str,
             contact_id: str,
             payload: dict) -> dict:
-        """update_contact updates the reference (id) contact with the given payload. Returns the updated contact model"""
+        """update_contact updates the reference (id) contact with the given payload. Returns the updated contact
+        model"""
 
         return self.__client.call(
             "PUT",

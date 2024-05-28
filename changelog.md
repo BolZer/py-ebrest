@@ -1,5 +1,12 @@
 CHANGELOG
 =========
+* 0.5.0 (2024-05-28) 
+    * Update dependencies
+    * Fix attachment download method
+    * Add new resource document versions
+    * Add new method to download the document as jpeg
+    * Rename method to download document as pdf to be more precise
+
 * 0.4.1 (2023-10-17) 
     * Update urllib3 to v. 1.26.17
 

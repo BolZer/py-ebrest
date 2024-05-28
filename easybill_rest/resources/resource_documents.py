@@ -120,8 +120,8 @@ class ResourceDocuments(ResourceAbstract):
             self.__client.get_basic_headers_for_json(),
             payload)
 
-    def download_document(self, document_id: str) -> bytes:
-        """download_document returns the document as bytes on success"""
+    def download_document_as_pdf(self, document_id: str) -> bytes:
+        """download_document_as_pdf returns the document pdf as bytes on success"""
 
         return self.__client.download(
             Helper.create_request_url_from_params(
@@ -129,5 +129,17 @@ class ResourceDocuments(ResourceAbstract):
                 "/" +
                 document_id +
                 "/pdf"),
+            self.__client.get_basic_headers_for_pdf(),
+        )
+
+    def download_document_as_jpeg(self, document_id: str, params: dict = None) -> bytes:
+        """download_document_as_jpeg returns the document jpeg as bytes on success"""
+
+        return self.__client.download(
+            Helper.create_request_url_from_params(
+                self.__endpoint +
+                "/" +
+                document_id +
+                "/jpg", params),
             self.__client.get_basic_headers_for_pdf(),
         )

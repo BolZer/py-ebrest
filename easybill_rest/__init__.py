@@ -21,10 +21,11 @@ from easybill_rest.resources.resource_tasks import ResourceTasks
 from easybill_rest.resources.resource_text_templates import ResourceTextTemplates
 from easybill_rest.resources.resource_time_trackings import ResourceTimeTrackings
 from easybill_rest.resources.resource_webhooks import ResourceWebhooks
+from easybill_rest.resources.resource_document_versions import ResourceDocumentVersions
 
 
 class Client:
-    _version: str = "0.4.1"
+    _version: str = "0.5.0"
     _base_url: str = "https://api.easybill.de"
     _requests = requests
 
@@ -176,6 +177,12 @@ class Client:
         """attachments returns the attachments resource which exposes the attachment resource."""
 
         return ResourceAttachments(self)
+
+    def document_versions(self) -> ResourceDocumentVersions:
+        """document_versions returns the document versions resource which exposes the document
+        version resource."""
+
+        return ResourceDocumentVersions(self)
 
     def call(
             self,
