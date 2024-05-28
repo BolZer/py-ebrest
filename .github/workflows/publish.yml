@@ -20,7 +20,7 @@ jobs:
     - name: Build sdist
       run: python setup.py sdist
 
-    - uses: yaananth/twine-upload@v1
+    - uses: yaananth/twine-upload@v2
       env:
         RUNNER: ${{ toJson(runner) }}
         SECRETS: ${{ toJson(secrets.PYPI_TOKEN) }}
