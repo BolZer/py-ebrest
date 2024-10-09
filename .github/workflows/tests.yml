@@ -24,10 +24,5 @@ jobs:
     runs-on: ${{ matrix.operating-system }}
 
     steps:
-      - name: Common Setup Workflow
-        uses: ./.github/workflows/common.yml
-        with:
-          python-version: ${{ matrix.python-version }}
-
       - name: Run tests with pytest
         run: poetry run pytest .
