@@ -7,7 +7,7 @@ on:
   pull_request:
     branches:
       - master
-u
+
 jobs:
   call-reusable-workflow:
     uses: ./.github/workflows/common.yml
