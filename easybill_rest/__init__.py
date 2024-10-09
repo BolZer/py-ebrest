@@ -189,11 +189,14 @@ class Client:
             method: str,
             request_url: str,
             headers: dict,
-            passed_payload: dict = {}) -> dict:
+            passed_payload=None) -> dict:
         """
             call calls the easybill api with the prepared connection.
             :raises: RequestException
         """
+
+        if passed_payload is None:
+            passed_payload = {}
 
         if method == "GET":
             response = self._httpx.request(
