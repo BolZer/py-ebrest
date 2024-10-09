@@ -1,4 +1,4 @@
-name: Python Lint (Pylint)
+name: Codestyle (autopep8)
 
 on:
   push:
