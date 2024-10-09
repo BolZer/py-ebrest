@@ -1,5 +1,11 @@
 CHANGELOG
 =========
+* 0.6.0 (2024-10-09)
+    * Move from requests to httpx
+    * Use Task instead of Make
+    * Use Poetry instead of pip
+    * Add and rework github actions
+
 * 0.5.0 (2024-05-28) 
     * Update dependencies
     * Fix attachment download method
