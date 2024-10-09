@@ -1,6 +1,10 @@
 ﻿version: '3'
 
 tasks:
+  install:
+    desc: Installs the dependencies with poetry
+    cmd: poetry install
+
   tests:
     desc: Executes the python tests
     cmds:
@@ -20,3 +24,7 @@ tasks:
     desc: Uses mypy for type checking
     cmds:
       - poetry run mypy --ignore-missing-imports ./easybill_rest/resources/ ./easybill_rest/__init__.py ./easybill_rest/helper.py
+
+  test_workflows:
+    desc: Uses act to test the github workflows
+    cmd: act --rm --quiet --workflows ./.github/workflows
