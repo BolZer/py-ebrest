@@ -1,0 +1,35 @@
+name: Python Lint (Pylint)
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.11
+
+    - name: Install poetry
+      uses: abatilo/actions-poetry@v2
+      with:
+        poetry-version: '1.8.3'
+
+    - name: Install dependencies
+      run: |
+        poetry install
+
+    - name: Check codestyle with autopep
+      run: |
+        poetry run autopep8 --aggressive --aggressive --recursive --diff ./easybill_rest/

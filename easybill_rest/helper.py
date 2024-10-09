@@ -8,7 +8,7 @@ class Helper:
         """create_request_url_from_params is a helper function which is used by the
         resources to generate the request_url"""
 
-        if params is None:
+        if params is  None:
             params = {}
 
         if len(params) == 0:
