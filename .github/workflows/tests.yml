@@ -7,8 +7,13 @@ on:
   pull_request:
     branches:
       - master
-
+u
 jobs:
+  call-reusable-workflow:
+    uses: ./.github/workflows/common.yml
+    with:
+      python-version: '3.11'
+
   build:
     strategy:
       matrix:
