@@ -26,6 +26,7 @@ from easybill_rest.tests.test_text_templates import TestResourceTextTemplates
 from easybill_rest.tests.test_webhooks import TestResourceWebhooks
 from easybill_rest.tests.test_document_versions import TestResourceDocumentVersions
 
+
 class UnitTestSuite(unittest.TestSuite):
 
     @staticmethod
