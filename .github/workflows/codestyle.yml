@@ -32,4 +32,4 @@ jobs:
 
     - name: Check codestyle with autopep
       run: |
-        poetry run autopep8 --aggressive --aggressive --recursive --diff ./easybill_rest/
+        poetry run autopep8 --aggressive --aggressive --recursive --diff --exit-code ./easybill_rest/

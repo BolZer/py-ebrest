@@ -1,4 +1,4 @@
-name: Python Static Type Checking (MyPy)
+name: Static Type Checking (MyPy)
 
 on:
   push:

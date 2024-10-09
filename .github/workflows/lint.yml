@@ -1,4 +1,4 @@
-name: Python Lint (Pylint)
+name: Lint (Pylint)
 
 on:
   push:

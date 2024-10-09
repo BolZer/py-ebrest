@@ -1,4 +1,4 @@
-name: Python Tests (pytest)
+name: Tests (pytest)
 on:
   push:
     branches:
