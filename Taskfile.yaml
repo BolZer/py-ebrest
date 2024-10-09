@@ -1,0 +1,7 @@
+﻿version: '3'
+
+tasks:
+  tests:
+    desc: Executes the python tests
+    cmds:
+      - poetry run pytest .
