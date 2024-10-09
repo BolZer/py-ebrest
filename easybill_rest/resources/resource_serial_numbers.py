@@ -20,7 +20,7 @@ class ResourceSerialNumbers(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_serial_numbers(self, params: dict = None) -> dict:
+    def get_serial_numbers(self, params: dict = {}) -> dict:
         """get_serial_numbers returns a dict with serial number objects"""
 
         return self.__client.call(

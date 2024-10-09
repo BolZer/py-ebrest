@@ -27,7 +27,7 @@ class ResourceDocuments(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_documents(self, params: dict = None) -> dict:
+    def get_documents(self, params: dict = {}) -> dict:
         """get_documents returns a dict with document objects"""
 
         return self.__client.call(
@@ -55,7 +55,7 @@ class ResourceDocuments(ResourceAbstract):
             payload
         )
 
-    def update_document(self, document_id: str, payload: dict, params: dict = None) -> dict:
+    def update_document(self, document_id: str, payload: dict, params: dict = {}) -> dict:
         """update_document updates the reference (id) document with the given payload. Returns the updated document"""
 
         return self.__client.call(
@@ -132,7 +132,7 @@ class ResourceDocuments(ResourceAbstract):
             self.__client.get_basic_headers_for_pdf(),
         )
 
-    def download_document_as_jpeg(self, document_id: str, params: dict = None) -> bytes:
+    def download_document_as_jpeg(self, document_id: str, params: dict = {}) -> bytes:
         """download_document_as_jpeg returns the document jpeg as bytes on success"""
 
         return self.__client.download(

@@ -27,7 +27,7 @@ from easybill_rest.resources.resource_document_versions import ResourceDocumentV
 class Client:
     _version: str = "0.6.0"
     _base_url: str = "https://api.easybill.de"
-    _httpx: httpx.Client = httpx.Client
+    _httpx: httpx.Client
 
     api_key: str = ""
     timeout: int
@@ -189,7 +189,7 @@ class Client:
             method: str,
             request_url: str,
             headers: dict,
-            passed_payload: dict = None) -> dict:
+            passed_payload: dict = {}) -> dict:
         """
             call calls the easybill api with the prepared connection.
             :raises: RequestException

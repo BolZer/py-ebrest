@@ -20,7 +20,7 @@ class ResourceDocumentVersions(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_document_versions(self, document_id: str, params: dict = None) -> dict:
+    def get_document_versions(self, document_id: str, params: dict = {}) -> dict:
         """get_document_versions returns a dict with version items for the requested document"""
 
         return self.__client.call(

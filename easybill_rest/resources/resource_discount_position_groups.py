@@ -20,7 +20,7 @@ class ResourceDiscountPositionGroups(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_position_group_discounts(self, params: dict = None) -> dict:
+    def get_position_group_discounts(self, params: dict = {}) -> dict:
         """get_position_group_discounts returns a dict with position group discount objects"""
 
         return self.__client.call(

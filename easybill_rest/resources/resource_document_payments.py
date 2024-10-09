@@ -20,7 +20,7 @@ class ResourceDocumentPayments(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_document_payments(self, params: dict = None) -> dict:
+    def get_document_payments(self, params: dict = {}) -> dict:
         """get_document_payments returns a dict with document payments objects"""
 
         return self.__client.call(

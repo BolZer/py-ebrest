@@ -20,7 +20,7 @@ class ResourceStocks(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_stocks(self, params: dict = None) -> dict:
+    def get_stocks(self, params: dict = {}) -> dict:
         """get_stocks returns a dict with stock objects"""
 
         return self.__client.call(
