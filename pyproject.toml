@@ -6,6 +6,9 @@ authors = ["Jan Nöhles <jan.noehles@easybill.de>"]
 license = "MIT"
 readme = "readme.md"
 package-mode = true
+packages = [
+    { include = "easybill_rest" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.11"
