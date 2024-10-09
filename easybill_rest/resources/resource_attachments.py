@@ -20,7 +20,7 @@ class ResourceAttachments(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_attachments(self, params: dict = None) -> dict:
+    def get_attachments(self, params: dict = {}) -> dict:
         """get_attachments returns a dict with attachment objects"""
 
         return self.__client.call(

@@ -1,0 +1,30 @@
+﻿version: '3'
+
+tasks:
+  install:
+    desc: Installs the dependencies with poetry
+    cmd: poetry install
+
+  tests:
+    desc: Executes the python tests
+    cmds:
+      - poetry run pytest .
+
+  fixcs:
+    desc: Fixes possible code style issues
+    cmds:
+      - poetry run autopep8 --in-place --aggressive --aggressive --recursive ./easybill_rest/
+
+  pylint:
+    desc: Lints the python code with pylint
+    cmds:
+      - poetry run pylint ./easybill_rest --rcfile=./pylint.rc
+
+  mypy:
+    desc: Uses mypy for type checking
+    cmds:
+      - poetry run mypy --ignore-missing-imports ./easybill_rest/resources/ ./easybill_rest/__init__.py ./easybill_rest/helper.py
+
+  test_workflows:
+    desc: Uses act to test the github workflows
+    cmd: act --rm --quiet --workflows ./.github/workflows

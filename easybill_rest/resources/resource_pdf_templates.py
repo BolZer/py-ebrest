@@ -20,7 +20,7 @@ class ResourcePdfTemplates(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_pdf_templates(self, params: dict = None) -> dict:
+    def get_pdf_templates(self, params: dict = {}) -> dict:
         """get_pdf_templates returns a dict with pdf-templates objects"""
 
         return self.__client.call(

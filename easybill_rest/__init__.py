@@ -1,4 +1,4 @@
-import requests
+import httpx
 
 from easybill_rest.resources.resource_attachments import ResourceAttachments
 from easybill_rest.resources.resource_contacts import ResourceContacts
@@ -25,9 +25,9 @@ from easybill_rest.resources.resource_document_versions import ResourceDocumentV
 
 
 class Client:
-    _version: str = "0.5.0"
+    _version: str = "0.6.0"
     _base_url: str = "https://api.easybill.de"
-    _requests = requests
+    _httpx: httpx.Client
 
     api_key: str = ""
     timeout: int
@@ -35,7 +35,7 @@ class Client:
     def __init__(self, api_key: str, timeout: int = 10) -> None:
         self.timeout = timeout
         self.api_key = api_key
-        self._requests = requests
+        self._httpx = httpx.Client(timeout=timeout)
 
     def get_basic_headers(self) -> dict:
         """get_basic_headers returns the basic headers used by the client. Contains auth and
@@ -189,14 +189,17 @@ class Client:
             method: str,
             request_url: str,
             headers: dict,
-            passed_payload: dict = None) -> dict:
+            passed_payload=None) -> dict:
         """
             call calls the easybill api with the prepared connection.
             :raises: RequestException
         """
 
+        if passed_payload is None:
+            passed_payload = {}
+
         if method == "GET":
-            response = self._requests.request(
+            response = self._httpx.request(
                 method,
                 self._base_url + request_url,
                 headers=headers,
@@ -208,7 +211,7 @@ class Client:
             return response.json()
 
         if method in ("PUT", "POST"):
-            response = self._requests.request(
+            response = self._httpx.request(
                 method,
                 self._base_url + request_url,
                 headers=headers,
@@ -220,7 +223,7 @@ class Client:
             return response.json()
 
         if method == "DELETE":
-            response = self._requests.request(
+            response = self._httpx.request(
                 method,
                 self._base_url + request_url,
                 headers=headers,
@@ -230,7 +233,7 @@ class Client:
             response.raise_for_status()
             return {}
 
-        response = self._requests.request(
+        response = self._httpx.request(
             method,
             self._base_url + request_url,
             headers=headers,
@@ -247,7 +250,7 @@ class Client:
             :raises: RequestException
         """
 
-        response = self._requests.post(
+        response = self._httpx.post(
             self._base_url + request_url,
             headers=headers,
             timeout=self.timeout,
@@ -264,7 +267,7 @@ class Client:
             :raises: RequestException
         """
 
-        response = self._requests.get(
+        response = self._httpx.get(
             self._base_url + request_url,
             headers=headers,
             timeout=self.timeout)

@@ -20,7 +20,7 @@ class ResourceSepaPayments(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_sepa_payments(self, params: dict = None) -> dict:
+    def get_sepa_payments(self, params: dict = {}) -> dict:
         """get_sepa_payments returns a dict with sepa payments objects"""
 
         return self.__client.call(

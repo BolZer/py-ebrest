@@ -20,7 +20,7 @@ class ResourcePostBoxes(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_post_boxes(self, params: dict = None) -> dict:
+    def get_post_boxes(self, params: dict = {}) -> dict:
         """get_post_boxes returns a dict with post box objects"""
 
         return self.__client.call(

@@ -20,7 +20,7 @@ class ResourceCustomerGroups(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_customer_groups(self, params: dict = None) -> dict:
+    def get_customer_groups(self, params: dict = {}) -> dict:
         """get_customer_groups returns a dict with customer groups objects"""
 
         return self.__client.call(

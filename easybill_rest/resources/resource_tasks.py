@@ -20,7 +20,7 @@ class ResourceTasks(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_tasks(self, params: dict = None) -> dict:
+    def get_tasks(self, params: dict = {}) -> dict:
         """get_tasks returns a dict with task objects"""
 
         return self.__client.call(

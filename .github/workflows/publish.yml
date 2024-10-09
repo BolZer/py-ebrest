@@ -17,10 +17,25 @@ jobs:
       with:
         python-version: "3.11"
 
-    - name: Build sdist
-      run: python setup.py sdist
+    - name: Install poetry
+      uses: abatilo/actions-poetry@v2
+      with:
+        poetry-version: '1.8.3'
 
-    - uses: yaananth/twine-upload@v2
-      env:
-        RUNNER: ${{ toJson(runner) }}
-        SECRETS: ${{ toJson(secrets.PYPI_TOKEN) }}
+    - name: Build with poetry
+      run: poetry build
+
+    - name: Setup repositories for test pypi
+      run: poetry config repositories.test-pypi https://test.pypi.org/legacy/
+
+    - name: Set api token for test pypi
+      run: poetry config pypi-token.test-pypi ${{secrets.TEST_PYPI_TOKEN}}
+
+    - name: Set api token for  pypi
+      run: poetry config pypi-token.pypi ${{secrets.PYPI_TOKEN}}
+
+    - name: Publish to test instance of PyPi
+      run: poetry publish -r test-pypi
+
+    - name: Publish to PyPi
+      run: poetry publish

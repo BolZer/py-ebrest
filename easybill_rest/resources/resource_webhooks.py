@@ -20,7 +20,7 @@ class ResourceWebhooks(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_webhooks(self, params: dict = None) -> dict:
+    def get_webhooks(self, params: dict = {}) -> dict:
         """get_webhooks returns a dict with webhook objects"""
 
         return self.__client.call(

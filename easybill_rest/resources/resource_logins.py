@@ -20,7 +20,7 @@ class ResourceLogins(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_logins(self, params: dict = None) -> dict:
+    def get_logins(self, params: dict = {}) -> dict:
         """get_logins returns a dict with login objects"""
 
         return self.__client.call(

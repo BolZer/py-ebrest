@@ -20,7 +20,7 @@ class ResourcePositionGroups(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_position_groups(self, params: dict = None) -> dict:
+    def get_position_groups(self, params: dict = {}) -> dict:
         """get_position_groups returns a dict with position group objects"""
 
         return self.__client.call(

@@ -20,7 +20,7 @@ class ResourceProjects(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_projects(self, params: dict = None) -> dict:
+    def get_projects(self, params: dict = {}) -> dict:
         """get_projects returns a dict with project objects"""
 
         return self.__client.call(

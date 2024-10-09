@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "easybill-rest"
+version = "0.6.0"
+description = "easybill_rest is a library to work with the easybill REST API (https://www.easybill.de/api/)"
+authors = ["Jan Nöhles <jan.noehles@easybill.de>"]
+license = "MIT"
+readme = "readme.md"
+package-mode = true
+packages = [
+    { include = "easybill_rest" }
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+httpx = "^0.27.2"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+autopep8 = "^2.3.1"
+mypy = "^1.11.2"
+pylint = "^3.3.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

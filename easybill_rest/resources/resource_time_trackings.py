@@ -20,7 +20,7 @@ class ResourceTimeTrackings(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_time_trackings(self, params: dict = None) -> dict:
+    def get_time_trackings(self, params: dict = {}) -> dict:
         """get_time_tracking returns a dict with time tracking objects"""
 
         return self.__client.call(

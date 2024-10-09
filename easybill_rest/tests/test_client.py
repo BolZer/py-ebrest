@@ -1,7 +1,7 @@
 import unittest
 from unittest import mock
 
-from requests import RequestException
+from httpx import HTTPStatusError
 
 from easybill_rest import Client
 from easybill_rest.resources.resource_attachments import ResourceAttachments
@@ -32,7 +32,7 @@ from easybill_rest.tests.test_case_abstract import EasybillRestTestCaseAbstract
 class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
 
     def test_client_version(self) -> None:
-        self.assertEqual('0.5.0', Client('')._version)
+        self.assertEqual('0.6.0', Client('')._version)
 
     def test_client_base_url(self) -> None:
         self.assertEqual('https://api.easybill.de', Client('')._base_url)
@@ -43,7 +43,7 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
         self.assertEqual('test', client.api_key)
 
     def test_client_attributes(self) -> None:
-        self.assertTrue(hasattr(Client(''), '_requests'))
+        self.assertTrue(hasattr(Client(''), '_httpx'))
         self.assertTrue(hasattr(Client(''), '_version'))
         self.assertTrue(hasattr(Client(''), '_base_url'))
         self.assertTrue(hasattr(Client(''), 'api_key'))
@@ -69,8 +69,8 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
         response_mock.status_code = mock.Mock(return_value=200)
         response_mock.json = mock.Mock(return_value={"test": "test"})
 
-        client._requests = mock.Mock()
-        client._requests.request = mock.Mock(return_value=response_mock)
+        client._httpx = mock.Mock()
+        client._httpx.request = mock.Mock(return_value=response_mock)
 
         result = client.call("", "", {})
         self.assertTrue(isinstance(result, dict))
@@ -84,19 +84,22 @@ class TestClient(unittest.TestCase, EasybillRestTestCaseAbstract):
         response_mock.status_code = mock.Mock(return_value=500)
         response_mock.content = bytes('{"msg": "exception"}', 'utf-8')
         response_mock.raise_for_status = mock.Mock(
-            side_effect=RequestException)
+            side_effect=HTTPStatusError(
+                "test exception",
+                request=mock.Mock(),
+                response=mock.Mock()))
 
-        client._requests = mock.Mock()
-        client._requests.request = mock.Mock(return_value=response_mock)
-        self.assertRaises(RequestException, client.call, "", "", {})
+        client._httpx = mock.Mock()
+        client._httpx.request = mock.Mock(return_value=response_mock)
+        self.assertRaises(HTTPStatusError, client.call, "", "", {})
 
     def test_client_call_using_right_format(self) -> None:
         client = Client("Test")
-        client._requests = mock.Mock()
+        client._httpx = mock.Mock()
 
         header = {
             'Authorization': 'Bearer Test',
-            'User-Agent': 'py-ebrest 0.5.0',
+            'User-Agent': 'py-ebrest 0.6.0',
             'Content-type': 'application/json'
         }
 

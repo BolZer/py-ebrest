@@ -20,7 +20,7 @@ class ResourceTextTemplates(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_text_templates(self, params: dict = None) -> dict:
+    def get_text_templates(self, params: dict = {}) -> dict:
         """get_text_templates returns a dict with text templates objects"""
 
         return self.__client.call(

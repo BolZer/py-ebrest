@@ -1,4 +1,4 @@
-name: Lint (Pylint)
+name: Codestyle (autopep8)
 
 on:
   push:
@@ -30,6 +30,6 @@ jobs:
       run: |
         poetry install
 
-    - name: Lint with pylint
+    - name: Check codestyle with autopep
       run: |
-        poetry run pylint ./easybill_rest --rcfile=./pylint.rc
+        poetry run autopep8 --aggressive --aggressive --recursive --diff --exit-code ./easybill_rest/

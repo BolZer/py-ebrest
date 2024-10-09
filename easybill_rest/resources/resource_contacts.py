@@ -20,7 +20,7 @@ class ResourceContacts(ResourceAbstract):
     def get_resource_endpoint(self):
         return self.__endpoint
 
-    def get_contacts(self, customer_id: str, params: dict = None) -> dict:
+    def get_contacts(self, customer_id: str, params: dict = {}) -> dict:
         """get_contacts returns a dict with contact objects for the referenced customer"""
 
         return self.__client.call(
