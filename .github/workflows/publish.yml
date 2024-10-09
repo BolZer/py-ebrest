@@ -22,17 +22,14 @@ jobs:
       with:
         poetry-version: '1.8.3'
 
-    - name: Setup repositories for test pypi
-      run: poetry config repositories.test-pypi https://test.pypi.org/legacy/
+    - name: Build and publish to test pypi
+      uses: JRubics/poetry-publish@v2.0
+      with:
+        pypi_token: ${{ secrets.TEST_PYPI_TOKEN }}
+        repository_name: "testpypi"
+        repository_url: "https://test.pypi.org/legacy/"
 
-    - name: Publish to test instance of PyPi
-      env:
-        TWINE_USERNAME: '__token__'
-        TWINE_PASSWORD: '${{ secrets.TEST_PYPI_TOKEN }}'
-      run: poetry publish -r test-pypi --build
-
-    - name: Publish to PyPi
-      env:
-        TWINE_USERNAME: '__token__'
-        TWINE_PASSWORD: '${{ secrets.PYPI_TOKEN }}'
-      run: poetry publish --build
+    - name: Build and publish to pypi
+      uses: JRubics/poetry-publish@v2.0
+      with:
+        pypi_token: ${{ secrets.PYPI_TOKEN }}
